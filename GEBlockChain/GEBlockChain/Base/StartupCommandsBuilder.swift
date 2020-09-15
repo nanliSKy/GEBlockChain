@@ -49,6 +49,7 @@ struct RegisterToRemoteNotificationsCommand: Command {
 struct InitalizeKeyBoardManagerCommand: Command {
     func execute() {
 
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
     }
 }
 

@@ -25,10 +25,14 @@ target 'GEBlockChain' do
 
   pod 'Alamofire', '~> 5.2'
   
+  pod 'Moya/ReactiveSwift', '~> 14.0'
+  
   pod 'SJRouter'
   
   pod 'Charts'
 
+  pod 'MJRefresh'
+  
   target 'GEBlockChainTests' do
     inherit! :search_paths
     # Pods for testing

@@ -1,0 +1,9 @@
+/* 
+  Localization.strings
+  GEBlockChain
+
+  Created by nan li on 2020/7/24.
+  Copyright © 2020 darchain. All rights reserved.
+*/
+"密码登录" = "密码登录";
+"验证码登录" = "验证码登录";

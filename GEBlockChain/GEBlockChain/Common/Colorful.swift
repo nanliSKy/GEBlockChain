@@ -32,7 +32,7 @@ final class Colorful {
             case .primary: return "#181C24".colorful()
             case .secondary: return "#181C24".colorful()
             case .thirddary: return "#22252E".colorful()
-            case .backColor: return "#FBFCFE ".colorful()
+            case .backColor: return UIColor.init(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 1)
             }
         }
     }
