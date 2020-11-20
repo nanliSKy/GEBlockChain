@@ -27,7 +27,7 @@ extension NetTargetType {
 //                return @"https://app.scvip.vip/api/";
 //
 //        }
-        return URL(string: "http://117.71.99.105:8880/app")!
+        return URL(string: "https://app.scvip.vip/api")!
     }
     
     var headers: [String : String]? {

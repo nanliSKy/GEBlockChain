@@ -28,6 +28,7 @@ class XibView: UIView {
         frame = contentView?.frame ?? frame
         loadedFromNib()
     }
+
     
     // MARK: - Postflight
     

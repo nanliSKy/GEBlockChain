@@ -35,44 +35,57 @@ class LoginViewController: GEBaseViewController {
     @IBOutlet weak var passwordForget: UIButton!
     
     @IBOutlet weak var passwordControl: UIButton!
+        
+    private let mineViewModel = MineViewModel()
     
-    let viewModel = LoginViewModel.init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//        Localization.default.checkCurrentLanguage()
         view.backgroundColor = UIColor.white
-        
         hbd_barTintColor = UIColor.white
-        
-        tfphone.reactive.continuousTextValues.observeValues { (text) in
-            print(text)
-        }
-        
         loginButton.vshadowColor(radius: 4, opacity: 0.5, s: CGSize(width: 0, height: 0), c: Pen.view(.basement))
         
+        
+        mineViewModel.input(account: tfphone, passwordOrCode: tfcode)
+        
+        mineViewModel.loginAction.values.observeValues {print("sssss")}
+        loginButton.reactive.isEnabled <~ mineViewModel.loginAction.isExecuting.map{!$0}
+        loginButton.reactive.controlEvents(.touchUpInside).observeValues { [unowned self] (sender) in
+            self.loginAction(sender)
+        }
+        
+        
+        mineViewModel.sendCodeAction.values.observeValues { [unowned self] _ in
+            Toast.show(message: "验证码已发送")
+            self.code.timerCountDuration(duration: 60)
+        }
+    
         regist.reactive.controlEvents(.touchUpInside).observeValues { (sender) in
             print("regist call")
-            
+
         }
-        
-        Localization.default.checkCurrentLanguage()
-        code.reactive.controlEvents(.touchUpInside).observeValues { (sender) in
-            sender.timerCountDuration(duration: 60, disableBackgroundColor: .white, disableTitleColor: .gray)
+
+        code.reactive.controlEvents(.touchUpInside).observeValues { [self] (sender) in
+            self.sendCodeAction(sender)
         }
-        
+
         passwordControl.reactive.controlEvents(.touchUpInside).observeValues { [unowned self] (sender) in
-            sender.isSelected = !sender.isSelected
+
             if sender.isSelected && self.typeChange.isSelected {
                 self.tfcode.isSecureTextEntry = true
             }else {
                 self.tfcode.isSecureTextEntry = false
             }
-            
-            
+            sender.isSelected = !sender.isSelected
+
         }
-        
-        
+
+        passwordForget.reactive.controlEvents(.touchUpInside).observeValues { [unowned self] (sender) in
+            self.navigationController?.pushViewController(FindPasswordViewController.board(), animated: true)
+        }
+
         
         typeChange.setTitle("验证码登录".localized, for: .selected)
         typeChange.setTitle("密码登录".localized, for: .normal)
@@ -87,6 +100,7 @@ class LoginViewController: GEBaseViewController {
                 self.passwordView.isHidden = false
                 self.code.isHidden = true
                 self.tfcode.isSecureTextEntry = true
+                self.mineViewModel.type = "2"
             }else {
                 self.loginType.text = "手机号登录"
                 self.warnType.text = "验证码"
@@ -94,40 +108,92 @@ class LoginViewController: GEBaseViewController {
                 self.passwordView.isHidden = true
                 self.code.isHidden = false
                 self.tfcode.isSecureTextEntry = false
+                self.mineViewModel.type = "1"
             }
         }
 
     }
     
+    
+    private func sendCodeAction(_ sender: UIButton) {
+        
+        self.view.endEditing(true)
+        if (self.mineViewModel.enableCode().value) {
+            self.mineViewModel.sendCodeAction.apply().start()
+        }else {
+            Toast.show(message: self.mineViewModel.err.value)
+        }
+        Toast.show(mineViewModel.sendCodeAction.errors)
+    }
+    
+    
+    private func loginAction(_ sender: UIButton) {
+        
+        self.view.endEditing(true)
+        if (self.mineViewModel.enableCCCCode().value) {
+            self.mineViewModel.loginAction.apply().start()
+        }else {
+            Toast.show(message: self.mineViewModel.err.value)
+        }
+        Toast.show(mineViewModel.loginAction.errors)
+    }
+    
+    @IBAction func tfPhoneClearClick(_ sender: Any) {
+        tfphone.text = ""
+    }
+    
     @IBAction func loginClick(_ sender: UIButton) {
         
-        viewModel.phone <~ tfphone.reactive.textValues
         
-        //两种传值方法
-        //1.input 参数
+        self.view.endEditing(true)
         
-        sender.reactive.pressed = CocoaAction(viewModel.loginAction, input: (tfphone.text ?? "", tfcode.text ?? "", "1"))
+        loginButton.reactive.isEnabled <~ mineViewModel.loginAction.isExecuting.map{!$0}
+        mineViewModel.loginAction.values.observeValues {print($0)}
         
-        //2. 闭包传值
-//        sender.reactive.pressed = CocoaAction(viewModel.smsAction) { [weak self] _ in
-//            return self?.tfphone.text ?? ""
-//        }
-        
-        Toast.show(viewModel.loginAction.errors)
-    
-        
-        viewModel.loginAction.events.observeResult { (event) in
-            if case let Result.success(value) = event {
-                print("success: \(value)")
+        loginButton.reactive.controlEvents(.touchUpInside).observeValues { [unowned self] (sender) in
+            if (self.mineViewModel.err.value.count > 0) {
+                self.mineViewModel.loginAction.apply().start()
+            }else {
+                Toast.show(message: self.mineViewModel.err.value)
             }
-            if case let Result.failure(error) = event {
-                print("error: \(error)")
-            }
+            
         }
+        loginButton.reactive.pressed = CocoaAction(mineViewModel.loginAction)
+        Toast.show(mineViewModel.loginAction.errors)
+     
+        
+//        viewModel.phone <~ tfphone.reactive.textValues
+//        tfphone.reactive.continuousTextValues.observeValues { (text) in
+//            print(text)
+//        }
+//        //两种传值方法
+//        //1.input 参数
+//
+//        sender.reactive.pressed = CocoaAction(viewModel.loginAction, input: (tfphone.text ?? "", tfcode.text ?? "", "1"))
+//
+//        //2. 闭包传值
+////        sender.reactive.pressed = CocoaAction(viewModel.smsAction) { [weak self] _ in
+////            return self?.tfphone.text ?? ""
+////        }
+//
+//        Toast.show(viewModel.loginAction.errors)
+//
+//
+//        viewModel.loginAction.events.observeResult { (event) in
+//            if case let Result.success(value) = event {
+//                print("success: \(value)")
+//            }
+//            if case let Result.failure(error) = event {
+//                print("error: \(error)")
+//            }
+//        }
         
      
     }
     
+    @IBAction func pageCloseClick(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     deinit {
         code.cancel(backgroundColor: .blue)
@@ -138,5 +204,11 @@ class LoginViewController: GEBaseViewController {
 extension LoginViewController {
     static func void() -> LoginViewController {
        return Board(.Login).destination(LoginViewController.self) as! LoginViewController
+    }
+    
+    class func showLoginVC(_ from: UIViewController?) {
+        let vc: LoginViewController = Board(.Login).destination(LoginViewController.self) as! LoginViewController
+        let nav: NavigationController = NavigationController(rootViewController: vc)
+        from?.present(nav, animated: true, completion: nil)
     }
 }

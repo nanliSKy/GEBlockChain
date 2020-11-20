@@ -14,8 +14,9 @@ class LoginViewModel: ViewModel {
     
     let net = Net<NetLoginRegistBussiness>()
     
-    let phone = MutableProperty<String?>(nil)
-    let code = MutableProperty<String?>(nil)
+    let phone = MutableProperty("")
+    let code = MutableProperty("")
+
     
     //MARK: phone
     let smsAction: Action<String, Void, NetError>
@@ -25,19 +26,31 @@ class LoginViewModel: ViewModel {
     
     //MARK: regist
     let registAction:Action<(String, String, String), Void, NetError>
+    
+    //MARK: regist
+    let findPasswordAction:Action<(String, String, String), Void, NetError>
+    
+    
     init() {
         
+//        smsAction = Action<String, Void, NetError>(enabledIf: self.enableCode) { [unowned net] (phone) -> SignalProducer<Void, NetError> in
+//            return net.detach(.smsCode(account: phone))
+//        }
         smsAction = Action<String, Void, NetError>.init(execute: { [unowned net] (phone) -> SignalProducer<Void, NetError> in
             print(phone)
             return net.detach(.smsCode(account: phone))
         })
         
-        loginAction = Action<(String, String, String), Account, NetError>.init(execute: { [unowned net] (phone, code, type) -> SignalProducer<Account, NetError> in
-            return net.detach(.login(account: phone, code: code, type: type), Account.self)
+        loginAction = Action<(String, String, String), Account, NetError>.init(execute: { [unowned net] (phone, code, password) -> SignalProducer<Account, NetError> in
+            return net.detach(.login(account: phone, code: code, password: password), Account.self)
         })
         
-        registAction = Action<(String, String, String), Void, NetError>.init(execute: { [unowned net] (account, code, password) -> SignalProducer<Void, NetError> in
-            return net.detach(.regist(account: account, code: code, password: password))
+        registAction = Action<(String, String, String), Void, NetError>.init(execute: { [unowned net] (phone, code, password) -> SignalProducer<Void, NetError> in
+            return net.detach(.regist(account: phone, code: code, password: password))
+        })
+        
+        findPasswordAction = Action<(String, String, String), Void, NetError>.init(execute: { [unowned net] (phone, code, password) -> SignalProducer<Void, NetError> in
+            return net.detach(.findPassword(account: phone, code: code, password: password))
         })
     }
 }

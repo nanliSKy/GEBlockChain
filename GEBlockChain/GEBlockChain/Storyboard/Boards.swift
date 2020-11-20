@@ -9,8 +9,10 @@
 import UIKit
 
 internal enum Boards: String {
-    case Login
     
+    case Main
+    case Login
+     
     var board: UIStoryboard {
         return Board(self)
     }

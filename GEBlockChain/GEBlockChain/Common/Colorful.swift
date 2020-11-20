@@ -24,7 +24,7 @@ final class Colorful {
     }
     
     enum View: Int, ColorDisplay {
-        case basement = 0, primary, secondary, thirddary, backColor
+        case basement = 0, primary, secondary, thirddary, backColor, viewBackgroundColor, tableBackgroundColor
         
         var colorful: UIColor? {
             switch self {
@@ -33,6 +33,8 @@ final class Colorful {
             case .secondary: return "#181C24".colorful()
             case .thirddary: return "#22252E".colorful()
             case .backColor: return UIColor.init(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 1)
+            case .viewBackgroundColor: return "#FBFCFE".colorful()
+            case .tableBackgroundColor: return "#F3F7FC".colorful()
             }
         }
     }

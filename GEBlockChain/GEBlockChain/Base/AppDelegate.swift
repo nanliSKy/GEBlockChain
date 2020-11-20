@@ -16,10 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow.init(frame: UIScreen.main.bounds)
-        
-
+                
         StartupCommandsBuilder()
-                .setKeyWindow(window!)
+                .setKeyWindow(window!, app: self)
                 .build()
                 .forEach {$0.execute()}
         // Override point for customization after application launch.

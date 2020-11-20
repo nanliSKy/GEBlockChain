@@ -12,7 +12,7 @@ class MineTableViewCell: BaseCell {
 
     lazy var mineC:[MineC] = {
         var c = [MineC]()
-        let s1 = MineC(content: "我的资产".localized, iamge: "mine_asset")
+        let s1 = MineC(content: "账户余额".localized, iamge: "mine_asset")
         c.append(s1)
         let s2 = MineC(content: "优惠券".localized, iamge: "mine_coupon")
         c.append(s2)
@@ -20,13 +20,13 @@ class MineTableViewCell: BaseCell {
         c.append(s3)
         let s4 = MineC(content: "提现".localized, iamge: "mine_assets_out")
         c.append(s4)
-        let s5 = MineC(content: "银行卡".localized, iamge: "mine_bank")
+        let s5 = MineC(content: "我的挂单".localized, iamge: "mine_pendOrder")
         c.append(s5)
-        let s6 = MineC(content: "资金划转".localized, iamge: "mine_assets_exchange")
+        let s6 = MineC(content: "我的资产".localized, iamge: "mine_assets_exchange")
         c.append(s6)
         let s7 = MineC(content: "邀请好友".localized, iamge: "mine_invate_friends")
         c.append(s7)
-        let s8 = MineC(content: "我的消息".localized, iamge: "mine_message")
+        let s8 = MineC(content: "银行卡".localized, iamge: "mine_bank")
         c.append(s8)
         return c
     }()
@@ -36,8 +36,10 @@ class MineTableViewCell: BaseCell {
         layout.minimumLineSpacing = 0
         layout.itemSize = CGSize(width: (Int.sw()-30)/4.0, height: 90.s6w())
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(MineCollectionViewCell.self, forCellWithReuseIdentifier: MineCollectionViewCell.className())
+        collectionView.register(MineCollectionViewCell.self)
+//        collectionView.register(MineCollectionViewCell.self, forCellWithReuseIdentifier: MineCollectionViewCell.className())
         collectionView.backgroundColor = .white
+        collectionView.layer.cornerRadius = 8
         return collectionView
     }()
     
@@ -55,7 +57,7 @@ class MineTableViewCell: BaseCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        backgroundColor = "#FBFCFE".colorful()
+        backgroundColor = Pen.view(.viewBackgroundColor)
         let backView = UIView()
         contentView.addSubview(backView)
         backView.backgroundColor = .white
@@ -65,6 +67,7 @@ class MineTableViewCell: BaseCell {
         }
         
         collectionView.dataSource = self
+
         backView.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -83,7 +86,8 @@ extension MineTableViewCell: UICollectionViewDataSource {
         return mineC.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MineCollectionViewCell.className(), for: indexPath) as! MineCollectionViewCell
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MineCollectionViewCell.className(), for: indexPath) as! MineCollectionViewCell
+        let cell: MineCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
         cell.mineC = mineC[indexPath.row]
         return cell
     }
@@ -100,7 +104,7 @@ class MineCollectionViewCell: UICollectionViewCell {
     let content: UILabel = {
         let l = UILabel()
         l.textColor = Pen.label(.primary)
-        l.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        l.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         l.text = "我的资产"
         return l
     }()
@@ -115,6 +119,7 @@ class MineCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
+//            Pen.view(.viewBackgroundColor)
         contentView.addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
             make.width.height.equalTo(30)

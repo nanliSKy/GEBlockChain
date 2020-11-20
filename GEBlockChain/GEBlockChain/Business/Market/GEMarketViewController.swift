@@ -13,6 +13,20 @@ class GEMarketViewController: GEBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = UIColor.white
+        let progress = IQProgressBar.init(frame: .zero)
+        progress.value = 0.6
+        progress.progressColor = .red
+        progress.backgroundColor = .green
+        progress.spacing = 2
+        progress.outlineWidth = 1
+        view.addSubview(progress)
+        progress.snp.makeConstraints { (make) in
+            make.left.equalTo(20)
+            make.top.equalTo(90)
+            make.width.equalTo(300)
+            make.height.equalTo(20)
+        }
         // Do any additional setup after loading the view.
     }
     

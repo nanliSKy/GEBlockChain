@@ -81,6 +81,8 @@ class AssetCell: BaseCell {
             guard let hightlights = bussiness?.highlights?.components(separatedBy: "，") else {
                 return
             }
+            
+            removeOldViews(form: highlightsContainer)
             for e in hightlights.enumerated() {
                 let l = UILabelPadding()
                 l.text = e.element
@@ -95,6 +97,13 @@ class AssetCell: BaseCell {
                 highlightsContainer.addArrangedSubview(l)
             }
         }
+        
+        
+    }
+    
+    func removeOldViews(form view: UIView) {
+        view.subviews
+            .forEach({$0.removeFromSuperview()})
     }
     
     override func awakeFromNib() {

@@ -18,15 +18,16 @@ import MJRefresh
 
 class GEHomeViewController: GEBaseViewController {
 
+    
     let manager = HomeBusinessVM()
     let business = MutableProperty<[Bussiness]?>(nil)
-    let tableHeaderView = AssetsIndexTableHeaderView(frame: CGRect(x: 0, y: 0, width: Int.sw(), height: 374))
+    let tableHeaderView = AssetsIndexTableHeaderView(frame: CGRect(x: 0, y: 0, width: Device.width, height: 374))
     let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         table.register(cell: AssetCell.self)
         table.separatorStyle = .none
         table.backgroundColor = Pen.view(.backColor)
-        table.rowHeight = 170.s6h()
+        table.rowHeight = Device.compareHeightTo6s(170)
         table.sectionHeaderHeight = 45
         return table
     }()
@@ -36,6 +37,7 @@ class GEHomeViewController: GEBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         hbd_barHidden = true
         view.backgroundColor = UIColor.white
         
@@ -78,7 +80,8 @@ class GEHomeViewController: GEBaseViewController {
         
         tableView.manage(by: manager)
 
-        
+        manager.dataHandle()
+      
        
 //        button.reactive.pressed = CocoaAction(manager.action)
 //
@@ -108,8 +111,16 @@ class GEHomeViewController: GEBaseViewController {
 //
 ////        generateSignalProducer()
 //        basicAction()
+        
+        let button = UIButton(frame: CGRect(x: 20, y: 400, width: 60 , height: 60))
+        button.backgroundColor = .red
+        button.addTarget(self, action: #selector(buttonClick), for: .touchUpInside)
+        view.addSubview(button)
     }
     
+    @objc func buttonClick() {
+        self.navigationController?.pushViewController(ProjectIntroViewController(), animated: true)
+    }
     
     func signalCreate() {
         
@@ -188,6 +199,11 @@ final class HomeBusinessVM: ViewModel, TableViewHandler {
     let action: Action<Void, [Bussiness], NetError>
     
 
+    func dataHandle() {
+        action.values.observeValues { [weak self] (data) in
+            self?.list.value +=  data
+        }
+    }
     
 
     init() {
@@ -195,7 +211,7 @@ final class HomeBusinessVM: ViewModel, TableViewHandler {
             return net.detach(.getAssetsList, DATASOURCE.self)
         }
         
-        list <~ action.values
+//        list <~ action.values
        
         
     }

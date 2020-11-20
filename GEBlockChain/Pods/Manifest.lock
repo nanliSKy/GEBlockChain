@@ -3,18 +3,21 @@ PODS:
   - Charts (3.5.0):
     - Charts/Core (= 3.5.0)
   - Charts/Core (3.5.0)
+  - ESTabBarController-swift (2.6.5)
   - Hue (5.0.0)
   - IQKeyboardManagerSwift (6.5.5)
   - JXPopupView (0.0.6)
   - Kingfisher (5.10.1):
     - Kingfisher/Core (= 5.10.1)
   - Kingfisher/Core (5.10.1)
+  - LTScrollView (0.3.0)
   - MJRefresh (3.5.0)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
   - Moya/ReactiveSwift (14.0.0):
     - Moya/Core
     - ReactiveSwift (~> 6.0)
+  - Parchment (2.4.0)
   - PKHUD (5.3.0)
   - ReactiveCocoa (11.0.0):
     - ReactiveSwift (~> 6.2)
@@ -27,12 +30,15 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 5.2)
   - Charts
+  - ESTabBarController-swift (~> 2.6.2)
   - Hue (~> 5.0.0)
   - IQKeyboardManagerSwift
   - JXPopupView (~> 0.0.5)
   - Kingfisher (= 5.10.1)
+  - LTScrollView
   - MJRefresh
   - Moya/ReactiveSwift (~> 14.0)
+  - Parchment (~> 2.4.0)
   - PKHUD
   - ReactiveCocoa
   - ReactiveSwift
@@ -43,12 +49,15 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - Charts
+    - ESTabBarController-swift
     - Hue
     - IQKeyboardManagerSwift
     - JXPopupView
     - Kingfisher
+    - LTScrollView
     - MJRefresh
     - Moya
+    - Parchment
     - PKHUD
     - ReactiveCocoa
     - ReactiveSwift
@@ -58,18 +67,21 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
   Charts: 40a08591df1f8ad5c223ddedfb1a06da92f24f7c
+  ESTabBarController-swift: f31cd3e30bde23619d3b300266f27864d96ffb58
   Hue: c129cb67be7d093a82bbbc30ce8a96757bf6f37a
   IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
   JXPopupView: 835012b4b3d0dfef4ebab128635a368993ff0668
   Kingfisher: eb36b7dfcc78d60877051c92c119a2865972961a
+  LTScrollView: 46029b501f34d31e33e33392935cb240eb1d1ed0
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  Parchment: 002785473861582385db5c6725165353c500198e
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
   ReactiveCocoa: 189fcea9c5af7e394dd8a4cfc1c6f77af9ff3598
   ReactiveSwift: 7937f26ec18d555e2a99352bd0a8b2817d1f042d
   SJRouter: a866e7884fc9219bed523be0a0318c3a84e85022
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: af12070e434f9986b11e7727cea6c285aa5e1744
+PODFILE CHECKSUM: ab3ed5f564d4e5e08debc3328409c60085890660
 
 COCOAPODS: 1.9.3

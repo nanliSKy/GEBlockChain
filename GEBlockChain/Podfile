@@ -33,6 +33,14 @@ target 'GEBlockChain' do
 
   pod 'MJRefresh'
   
+  pod 'Parchment', '~> 2.4.0'
+  
+  #滚动页
+  pod 'LTScrollView'
+  
+  #tabbar样式
+  pod 'ESTabBarController-swift', '~> 2.6.2'
+  
   target 'GEBlockChainTests' do
     inherit! :search_paths
     # Pods for testing

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MineIntroView" customModule="GEBlockChain" customModuleProvider="target">
+            <connections>
+                <outlet property="backClick" destination="y89-yc-nH3" id="d50-Oh-ucY"/>
+                <outlet property="balanceText" destination="eMr-Uu-cRe" id="3Pb-WZ-EM7"/>
+                <outlet property="certClick" destination="oi5-vu-J4i" id="ZEU-Yu-2Vn"/>
+                <outlet property="nameIntro" destination="kJM-e1-R1D" id="QjO-cq-nnI"/>
+                <outlet property="viewBack" destination="2KC-x9-kPD" id="NBl-r3-UdE"/>
+                <outlet property="waitEarnText" destination="Tm9-c7-Esc" id="9oD-T7-BPJ"/>
+                <outlet property="yeterEarnText" destination="BoD-AU-mVT" id="dRh-Yn-rCI"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="279"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alipay_pay" translatesAutoresizingMaskIntoConstraints="NO" id="X9k-5L-obc">
+                    <rect key="frame" x="15" y="55" width="42" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="42" id="uh0-y9-UC4"/>
+                        <constraint firstAttribute="height" constant="42" id="wmy-Uw-gMJ"/>
+                    </constraints>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="MXn-RT-Bk9">
+                    <rect key="frame" x="67" y="55.5" width="93" height="41.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Iva Mullins" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJM-e1-R1D">
+                            <rect key="frame" x="5.5" y="0.0" width="82" height="19.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <color key="textColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="7W2-qC-1Rp">
+                            <rect key="frame" x="0.0" y="27.5" width="93" height="14"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_cert" translatesAutoresizingMaskIntoConstraints="NO" id="Jvj-qM-IMz">
+                                    <rect key="frame" x="0.0" y="0.0" width="14" height="14"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="14" id="F6l-CY-ICz"/>
+                                        <constraint firstAttribute="width" constant="14" id="hNm-71-8r9"/>
+                                    </constraints>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oi5-vu-J4i">
+                                    <rect key="frame" x="16" y="0.0" width="77" height="14"/>
+                                    <state key="normal" title="请实名认证">
+                                        <color key="titleColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y89-yc-nH3">
+                    <rect key="frame" x="373" y="63" width="26" height="26"/>
+                    <state key="normal" image="mine_backup"/>
+                    <connections>
+                        <action selector="backupClick:" destination="-1" eventType="touchUpInside" id="57x-f2-dv4"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2KC-x9-kPD">
+                    <rect key="frame" x="15" y="123" width="384" height="148"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_YuE" translatesAutoresizingMaskIntoConstraints="NO" id="zef-av-QOF">
+                            <rect key="frame" x="257" y="15" width="97" height="72"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="余额账户（元）" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcN-bo-w0m">
+                            <rect key="frame" x="14" y="18" width="100" height="17"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mHW-Iy-13c">
+                            <rect key="frame" x="119" y="15.5" width="18" height="22"/>
+                            <state key="normal" image="eye_open"/>
+                            <state key="selected" image="eye_close"/>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="76592.324332" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMr-Uu-cRe">
+                            <rect key="frame" x="14" y="52.5" width="202.5" height="33.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XtM-ar-89u">
+                            <rect key="frame" x="14" y="85" width="116" height="48"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="预计待结算收益(元)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TmM-18-k1t">
+                                    <rect key="frame" x="0.0" y="0.0" width="116" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tm9-c7-Esc">
+                                    <rect key="frame" x="0.0" y="24" width="116" height="24"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mWa-su-AF9">
+                            <rect key="frame" x="253" y="85" width="116" height="48"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昨日预计收益(元)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxG-tw-Ah5">
+                                    <rect key="frame" x="0.0" y="0.0" width="116" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BoD-AU-mVT">
+                                    <rect key="frame" x="0.0" y="24" width="116" height="24"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.031372549020000001" green="0.50980392159999999" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="mWa-su-AF9" firstAttribute="bottom" secondItem="XtM-ar-89u" secondAttribute="bottom" id="4GN-Tj-8sX"/>
+                        <constraint firstItem="eMr-Uu-cRe" firstAttribute="top" secondItem="mHW-Iy-13c" secondAttribute="bottom" constant="15" id="4fi-MI-N1V"/>
+                        <constraint firstAttribute="trailing" secondItem="zef-av-QOF" secondAttribute="trailing" constant="30" id="9G8-TE-tnX"/>
+                        <constraint firstItem="XtM-ar-89u" firstAttribute="leading" secondItem="mcN-bo-w0m" secondAttribute="leading" id="AvP-7X-Q12"/>
+                        <constraint firstItem="mHW-Iy-13c" firstAttribute="centerY" secondItem="mcN-bo-w0m" secondAttribute="centerY" id="EYs-kH-eY1"/>
+                        <constraint firstAttribute="bottom" secondItem="XtM-ar-89u" secondAttribute="bottom" constant="15" id="KmB-U3-F4J"/>
+                        <constraint firstItem="mcN-bo-w0m" firstAttribute="leading" secondItem="2KC-x9-kPD" secondAttribute="leading" constant="14" id="LAV-Mn-DGq"/>
+                        <constraint firstAttribute="trailing" secondItem="mWa-su-AF9" secondAttribute="trailing" constant="15" id="N1C-Kj-39v"/>
+                        <constraint firstItem="mWa-su-AF9" firstAttribute="height" secondItem="XtM-ar-89u" secondAttribute="height" id="UlV-rY-Kuz"/>
+                        <constraint firstItem="mcN-bo-w0m" firstAttribute="top" secondItem="2KC-x9-kPD" secondAttribute="top" constant="18" id="UrC-28-DpQ"/>
+                        <constraint firstItem="mWa-su-AF9" firstAttribute="width" secondItem="XtM-ar-89u" secondAttribute="width" id="gNb-s5-ahS"/>
+                        <constraint firstItem="eMr-Uu-cRe" firstAttribute="leading" secondItem="mcN-bo-w0m" secondAttribute="leading" id="oN6-cr-bBF"/>
+                        <constraint firstItem="zef-av-QOF" firstAttribute="top" secondItem="2KC-x9-kPD" secondAttribute="top" constant="15" id="rBd-h8-uQo"/>
+                        <constraint firstItem="mHW-Iy-13c" firstAttribute="leading" secondItem="mcN-bo-w0m" secondAttribute="trailing" constant="5" id="wmd-qr-zgS"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="X9k-5L-obc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="KYL-ov-CO1"/>
+                <constraint firstItem="MXn-RT-Bk9" firstAttribute="centerY" secondItem="X9k-5L-obc" secondAttribute="centerY" id="TgH-dl-QXO"/>
+                <constraint firstAttribute="trailing" secondItem="2KC-x9-kPD" secondAttribute="trailing" constant="15" id="VgP-fH-5Kc"/>
+                <constraint firstItem="y89-yc-nH3" firstAttribute="centerY" secondItem="X9k-5L-obc" secondAttribute="centerY" id="chK-up-HT9"/>
+                <constraint firstItem="MXn-RT-Bk9" firstAttribute="leading" secondItem="X9k-5L-obc" secondAttribute="trailing" constant="10" id="gWl-hv-PTe"/>
+                <constraint firstItem="X9k-5L-obc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="55" id="nGe-xh-zd7"/>
+                <constraint firstAttribute="bottom" secondItem="2KC-x9-kPD" secondAttribute="bottom" constant="8" id="p6x-w7-Ben"/>
+                <constraint firstItem="2KC-x9-kPD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="pS8-30-UAZ"/>
+                <constraint firstItem="2KC-x9-kPD" firstAttribute="top" secondItem="X9k-5L-obc" secondAttribute="bottom" constant="26" id="sgd-at-Krc"/>
+                <constraint firstAttribute="trailing" secondItem="y89-yc-nH3" secondAttribute="trailing" constant="15" id="zdX-bL-8Yd"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="245" y="83"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="alipay_pay" width="42" height="42"/>
+        <image name="eye_close" width="18" height="16"/>
+        <image name="eye_open" width="18" height="14"/>
+        <image name="mine_YuE" width="97" height="72"/>
+        <image name="mine_backup" width="26" height="26"/>
+        <image name="mine_cert" width="16" height="16"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

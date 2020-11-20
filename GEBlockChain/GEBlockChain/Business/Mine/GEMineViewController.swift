@@ -16,22 +16,27 @@ import ReactiveSwift
 class GEMineViewController: GEBaseViewController {
 
     let tableView: UITableView = {
-       let table = UITableView(frame: .zero, style: .grouped)
-        table.register(cell: AssetCell.self)
-        table.separatorStyle = .none
-        table.backgroundColor = "#FBFCFE".colorful()
-        table.sectionHeaderHeight = 45
-        table.register(cell: MineTableViewCell.self)
-        table.register(cell: MineOrderTableViewCell.self)
-        return table
+       let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.register(cell: AssetCell.self)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = "#FBFCFE".colorful()
+        tableView.sectionHeaderHeight = 45
+        tableView.register(MineTableViewCell.self)
+        tableView.register(MineOrderTableViewCell.self)
+        return tableView
     }()
     
-    let mineTableHeaderView = MineTableHeaderView(frame: CGRect(x: 0, y: 0, width: Int.sw(), height: 245.s6h()))
+    private lazy var headerView: MineIntroView = {
+        let view = MineIntroView()
+        view.height = Device.compareHeightTo6s(228)
+        return view
+    }()
+//    let mineTableHeaderView = MineTableHeaderView(frame: CGRect(x: 0, y: 0, width: Int.sw(), height: 245.s6h()))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hbd_barHidden = true
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = .white
         
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
@@ -39,15 +44,20 @@ class GEMineViewController: GEBaseViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.backgroundColor = Pen.view(.viewBackgroundColor)
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
             make.top.bottom.left.right.equalTo(view)
         }
         
-        tableView.tableHeaderView = mineTableHeaderView
-        mineTableHeaderView.cert.reactive.controlEvents(.touchUpInside).observeValues { [weak self] (sender) in
-            self?.present(LoginViewController.void(), animated: true, completion: nil)
+        tableView.tableHeaderView = headerView
+        headerView.backClick.reactive.controlEvents(.touchUpInside).observeValues { [weak self] (sender) in
+            LoginViewController.showLoginVC(self)
+//            self?.present(LoginViewController.void(), animated: true, completion: nil)
         }
+//        mineTableHeaderView.cert.reactive.controlEvents(.touchUpInside).observeValues { [weak self] (sender) in
+//            self?.present(LoginViewController.void(), animated: true, completion: nil)
+//        }
         
     }
     
@@ -62,11 +72,16 @@ extension GEMineViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: MineTableViewCell.className()) as! MineTableViewCell
+            let cell: MineTableViewCell = tableView.dequeueReusableCell(for: indexPath)
             return cell
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: MineOrderTableViewCell.className()) as! MineOrderTableViewCell
+        let cell: MineOrderTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+        
+        cell.selectControllerIndex.signal.observeValues { [unowned self] (index) in
+            self.navigationController?.pushViewController(TradeOrderContainerViewController(), animated: true)
+            
+        }
         return cell
         
     }

@@ -18,6 +18,9 @@ class RegistViewController: GEBaseViewController {
     @IBOutlet weak var tfCode: UITextField!
     @IBOutlet weak var tfPassword: UITextField!
     @IBOutlet weak var regist: UIButton!
+    @IBOutlet weak var readClick: UIButton!
+    @IBOutlet weak var readContext: UILabel!
+    @IBOutlet weak var sendCode: UIButton!
     
     let viewModel = LoginViewModel.init()
     
@@ -60,7 +63,13 @@ class RegistViewController: GEBaseViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func sendCodeClick(_ sender: UIButton) {
+        
+        sender.isSelected = !sender.isSelected
+    
+    }
+    
+   
     func registClick() {
         
         regist.reactive.pressed = CocoaAction(viewModel.registAction, input: (tfPhone.text ?? "", tfCode.text ?? "", tfPassword.text ?? ""))

@@ -31,8 +31,29 @@
 		29F3F61D24C14B2400096556 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29F3F61B24C14B2400096556 /* Main.storyboard */; };
 		29F3F62224C14B2900096556 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29F3F62024C14B2900096556 /* LaunchScreen.storyboard */; };
 		29F3F62D24C14B2900096556 /* GEBlockChainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F3F62C24C14B2900096556 /* GEBlockChainTests.swift */; };
+		3C12BD052562721D006E2040 /* GEProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C12BD042562721D006E2040 /* GEProjectDetailViewController.swift */; };
+		3C12BD0B25627807006E2040 /* RuleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C12BD0A25627807006E2040 /* RuleTableViewController.swift */; };
+		3C12BD3525629A93006E2040 /* HeaderPowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C12BD3425629A93006E2040 /* HeaderPowerView.swift */; };
+		3C12BD3A25629AAC006E2040 /* HeaderPowerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C12BD3925629AAC006E2040 /* HeaderPowerView.xib */; };
+		3C12BD822563674B006E2040 /* ProjectIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C12BD812563674B006E2040 /* ProjectIntroViewController.swift */; };
+		3C12BD9225639EAB006E2040 /* WRNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C12BD8C25639EAB006E2040 /* WRNavigationBar.swift */; };
+		3C12BD9325639EAB006E2040 /* WRCustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C12BD8D25639EAB006E2040 /* WRCustomNavigationBar.swift */; };
+		3C12BD9425639EAB006E2040 /* WRProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C12BD8F25639EAB006E2040 /* WRProxy.swift */; };
+		3C12BD9525639EAB006E2040 /* WRCycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C12BD9025639EAB006E2040 /* WRCycleScrollView.swift */; };
+		3C12BD9625639EAB006E2040 /* WRCycleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C12BD9125639EAB006E2040 /* WRCycleCell.swift */; };
+		3C12BD9A25639EED006E2040 /* IQNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C12BD9925639EED006E2040 /* IQNavigationViewController.swift */; };
+		3C12BDB32563A88B006E2040 /* IQTabBarItemContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C12BDB22563A88B006E2040 /* IQTabBarItemContentView.swift */; };
+		3C12BDB72563A945006E2040 /* IQBouncesItemContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C12BDB62563A945006E2040 /* IQBouncesItemContentView.swift */; };
+		3C12BDBB2563A995006E2040 /* IQIrregularityItemContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C12BDBA2563A995006E2040 /* IQIrregularityItemContentView.swift */; };
+		3C12BDC02563B40C006E2040 /* MineIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C12BDBF2563B40C006E2040 /* MineIntroView.swift */; };
+		3C12BDC62563B416006E2040 /* MineIntroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C12BDC52563B416006E2040 /* MineIntroView.xib */; };
+		3C12BDCC2563CA1A006E2040 /* FindPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C12BDCB2563CA1A006E2040 /* FindPasswordViewController.swift */; };
 		3C42811A24EE14B700221D08 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C42811924EE14B700221D08 /* UILabel.swift */; };
-		3C68C7F224EB76B90051BB4F /* MineTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C68C7F124EB76B90051BB4F /* MineTableHeaderView.swift */; };
+		3C61CE93255EAD16004369D4 /* IQProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C61CE92255EAD16004369D4 /* IQProgressBar.swift */; };
+		3C61CF62256220AA004369D4 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C61CF61256220AA004369D4 /* UIView+Constraints.swift */; };
+		3C61CF68256238CB004369D4 /* DemoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C61CF67256238CB004369D4 /* DemoTableViewCell.swift */; };
+		3C61CF6C256248F6004369D4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C61CF6B256248F6004369D4 /* TableViewController.swift */; };
+		3C61CF70256251BC004369D4 /* GEProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C61CF6F256251BC004369D4 /* GEProjectViewController.swift */; };
 		3C68C7F424EBAD750051BB4F /* MineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C68C7F324EBAD750051BB4F /* MineTableViewCell.swift */; };
 		3C68C7F824EBC4CC0051BB4F /* MineOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C68C7F724EBC4CC0051BB4F /* MineOrderTableViewCell.swift */; };
 		3C78465E25061712006284B5 /* ReactiveExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C78465D25061712006284B5 /* ReactiveExtension.swift */; };
@@ -63,6 +84,22 @@
 		3C94026E2510ABC700783AA9 /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9402652510ABC700783AA9 /* LocalizationManager.swift */; };
 		3C94026F2510ABC700783AA9 /* LocalizeFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9402682510ABC700783AA9 /* LocalizeFuncs.swift */; };
 		3C9402702510ABC700783AA9 /* UIView+Positioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9402692510ABC700783AA9 /* UIView+Positioning.swift */; };
+		3C9402722510B10C00783AA9 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9402712510B10C00783AA9 /* Device.swift */; };
+		3C9904F82564DCB200B76D2E /* MineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9904F72564DCB200B76D2E /* MineViewModel.swift */; };
+		3C99050D256612F600B76D2E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C99050C256612F600B76D2E /* HomeViewController.swift */; };
+		3C99051125661C1D00B76D2E /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C99051025661C1D00B76D2E /* HomeHeaderView.swift */; };
+		3C99052525661DEC00B76D2E /* DIN Alternate Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3C99052425661DEC00B76D2E /* DIN Alternate Bold.ttf */; };
+		3C99052925662E3200B76D2E /* HomeAssestsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C99052825662E3200B76D2E /* HomeAssestsCell.swift */; };
+		3C9905302566442500B76D2E /* TradeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C99052F2566442400B76D2E /* TradeContainerViewController.swift */; };
+		3C9905342566444700B76D2E /* SubscribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9905332566444700B76D2E /* SubscribeViewController.swift */; };
+		3C99053B2566453B00B76D2E /* TradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C99053A2566453B00B76D2E /* TradeViewController.swift */; };
+		3C99053F2566563B00B76D2E /* CCCCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C99053E2566563B00B76D2E /* CCCCViewController.swift */; };
+		3C9905432566623300B76D2E /* TradeSortArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9905422566623300B76D2E /* TradeSortArrowView.swift */; };
+		3C990548256696F600B76D2E /* TradeOrderContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C990547256696F600B76D2E /* TradeOrderContainerViewController.swift */; };
+		3C99054C2566979200B76D2E /* TraderOrderBuyContrainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C99054B2566979200B76D2E /* TraderOrderBuyContrainerViewController.swift */; };
+		3C990550256697AA00B76D2E /* TradeOrderSellContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C99054F256697AA00B76D2E /* TradeOrderSellContainerViewController.swift */; };
+		3C99055425669B1000B76D2E /* OrderBuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C99055325669B1000B76D2E /* OrderBuyViewController.swift */; };
+		3C99055825669B2700B76D2E /* OrderSellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C99055725669B2700B76D2E /* OrderSellViewController.swift */; };
 		3CA8D7A124ECC407001AFB4E /* RegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA8D7A024ECC407001AFB4E /* RegistViewController.swift */; };
 		3CA8D7A324ECF7AA001AFB4E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA8D7A224ECF7AA001AFB4E /* LoginViewModel.swift */; };
 		3CA8D7A524ED0D49001AFB4E /* NetLoginRegistBussiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA8D7A424ED0D49001AFB4E /* NetLoginRegistBussiness.swift */; };
@@ -114,8 +151,29 @@
 		29F3F62C24C14B2900096556 /* GEBlockChainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GEBlockChainTests.swift; sourceTree = "<group>"; };
 		29F3F62E24C14B2900096556 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34DFDBCD44D10FF6EAE5C711 /* Pods_GEBlockChain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GEBlockChain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C12BD042562721D006E2040 /* GEProjectDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GEProjectDetailViewController.swift; sourceTree = "<group>"; };
+		3C12BD0A25627807006E2040 /* RuleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleTableViewController.swift; sourceTree = "<group>"; };
+		3C12BD3425629A93006E2040 /* HeaderPowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderPowerView.swift; sourceTree = "<group>"; };
+		3C12BD3925629AAC006E2040 /* HeaderPowerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderPowerView.xib; sourceTree = "<group>"; };
+		3C12BD812563674B006E2040 /* ProjectIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectIntroViewController.swift; sourceTree = "<group>"; };
+		3C12BD8C25639EAB006E2040 /* WRNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WRNavigationBar.swift; sourceTree = "<group>"; };
+		3C12BD8D25639EAB006E2040 /* WRCustomNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WRCustomNavigationBar.swift; sourceTree = "<group>"; };
+		3C12BD8F25639EAB006E2040 /* WRProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WRProxy.swift; sourceTree = "<group>"; };
+		3C12BD9025639EAB006E2040 /* WRCycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WRCycleScrollView.swift; sourceTree = "<group>"; };
+		3C12BD9125639EAB006E2040 /* WRCycleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WRCycleCell.swift; sourceTree = "<group>"; };
+		3C12BD9925639EED006E2040 /* IQNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQNavigationViewController.swift; sourceTree = "<group>"; };
+		3C12BDB22563A88B006E2040 /* IQTabBarItemContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQTabBarItemContentView.swift; sourceTree = "<group>"; };
+		3C12BDB62563A945006E2040 /* IQBouncesItemContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQBouncesItemContentView.swift; sourceTree = "<group>"; };
+		3C12BDBA2563A995006E2040 /* IQIrregularityItemContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQIrregularityItemContentView.swift; sourceTree = "<group>"; };
+		3C12BDBF2563B40C006E2040 /* MineIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineIntroView.swift; sourceTree = "<group>"; };
+		3C12BDC52563B416006E2040 /* MineIntroView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineIntroView.xib; sourceTree = "<group>"; };
+		3C12BDCB2563CA1A006E2040 /* FindPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPasswordViewController.swift; sourceTree = "<group>"; };
 		3C42811924EE14B700221D08 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
-		3C68C7F124EB76B90051BB4F /* MineTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineTableHeaderView.swift; sourceTree = "<group>"; };
+		3C61CE92255EAD16004369D4 /* IQProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQProgressBar.swift; sourceTree = "<group>"; };
+		3C61CF61256220AA004369D4 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		3C61CF67256238CB004369D4 /* DemoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTableViewCell.swift; sourceTree = "<group>"; };
+		3C61CF6B256248F6004369D4 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		3C61CF6F256251BC004369D4 /* GEProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GEProjectViewController.swift; sourceTree = "<group>"; };
 		3C68C7F324EBAD750051BB4F /* MineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineTableViewCell.swift; sourceTree = "<group>"; };
 		3C68C7F724EBC4CC0051BB4F /* MineOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineOrderTableViewCell.swift; sourceTree = "<group>"; };
 		3C78465D25061712006284B5 /* ReactiveExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveExtension.swift; sourceTree = "<group>"; };
@@ -147,6 +205,22 @@
 		3C9402652510ABC700783AA9 /* LocalizationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
 		3C9402682510ABC700783AA9 /* LocalizeFuncs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizeFuncs.swift; sourceTree = "<group>"; };
 		3C9402692510ABC700783AA9 /* UIView+Positioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Positioning.swift"; sourceTree = "<group>"; };
+		3C9402712510B10C00783AA9 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		3C9904F72564DCB200B76D2E /* MineViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineViewModel.swift; sourceTree = "<group>"; };
+		3C99050C256612F600B76D2E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		3C99051025661C1D00B76D2E /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
+		3C99052425661DEC00B76D2E /* DIN Alternate Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN Alternate Bold.ttf"; sourceTree = "<group>"; };
+		3C99052825662E3200B76D2E /* HomeAssestsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAssestsCell.swift; sourceTree = "<group>"; };
+		3C99052F2566442400B76D2E /* TradeContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeContainerViewController.swift; sourceTree = "<group>"; };
+		3C9905332566444700B76D2E /* SubscribeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeViewController.swift; sourceTree = "<group>"; };
+		3C99053A2566453B00B76D2E /* TradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeViewController.swift; sourceTree = "<group>"; };
+		3C99053E2566563B00B76D2E /* CCCCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCCCViewController.swift; sourceTree = "<group>"; };
+		3C9905422566623300B76D2E /* TradeSortArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSortArrowView.swift; sourceTree = "<group>"; };
+		3C990547256696F600B76D2E /* TradeOrderContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeOrderContainerViewController.swift; sourceTree = "<group>"; };
+		3C99054B2566979200B76D2E /* TraderOrderBuyContrainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraderOrderBuyContrainerViewController.swift; sourceTree = "<group>"; };
+		3C99054F256697AA00B76D2E /* TradeOrderSellContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeOrderSellContainerViewController.swift; sourceTree = "<group>"; };
+		3C99055325669B1000B76D2E /* OrderBuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBuyViewController.swift; sourceTree = "<group>"; };
+		3C99055725669B2700B76D2E /* OrderSellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSellViewController.swift; sourceTree = "<group>"; };
 		3CA8D7A024ECC407001AFB4E /* RegistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistViewController.swift; sourceTree = "<group>"; };
 		3CA8D7A224ECF7AA001AFB4E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		3CA8D7A424ED0D49001AFB4E /* NetLoginRegistBussiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetLoginRegistBussiness.swift; sourceTree = "<group>"; };
@@ -184,6 +258,7 @@
 				3C8AEE0B24D007C1002DFBE5 /* Net */,
 				29EB254524C830C500F969A4 /* HBD */,
 				29F3F61524C14B2400096556 /* AppDelegate.swift */,
+				3C12BD9925639EED006E2040 /* IQNavigationViewController.swift */,
 				29EB254F24C8314900F969A4 /* NavigationController.swift */,
 				29EB252024C7D8CF00F969A4 /* GETabBarViewController.swift */,
 				29EB252824C7DD8A00F969A4 /* GEBaseViewController.swift */,
@@ -206,6 +281,7 @@
 		29EB251C24C7D7BC00F969A4 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				3C99052425661DEC00B76D2E /* DIN Alternate Bold.ttf */,
 				29EB252224C7DCE000F969A4 /* Assets.xcassets */,
 				3C8AEDFB24CAD964002DFBE5 /* Localization.strings */,
 			);
@@ -215,6 +291,7 @@
 		29EB251D24C7D7C900F969A4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				3C61CEA525621735004369D4 /* Third */,
 				3C94025C2510AACA00783AA9 /* Utils */,
 				3C78465C250616EB006284B5 /* ReactiveExtension */,
 				3C8AEE1924D29746002DFBE5 /* View */,
@@ -222,9 +299,6 @@
 				29EB253624C7EBA000F969A4 /* Appearance.swift */,
 				29EB253824C8089600F969A4 /* Colorful.swift */,
 				29EB253A24C80B4500F969A4 /* IQStrings.swift */,
-				3C8AEDF124CA7D9F002DFBE5 /* UIView.swift */,
-				3C8AEDF324CA8F0A002DFBE5 /* UIButton.swift */,
-				3C42811924EE14B700221D08 /* UILabel.swift */,
 				3C8AEDF524CAD240002DFBE5 /* Language.swift */,
 				3C8AEE1024D162FA002DFBE5 /* Toast.swift */,
 				3C8AEE1C24D2998D002DFBE5 /* iPhone.swift */,
@@ -237,7 +311,17 @@
 			children = (
 				3C8AEE1224D17129002DFBE5 /* View */,
 				29EB252A24C7DDBF00F969A4 /* GEHomeViewController.swift */,
+				3C99050C256612F600B76D2E /* HomeViewController.swift */,
+				3C99052F2566442400B76D2E /* TradeContainerViewController.swift */,
+				3C9905332566444700B76D2E /* SubscribeViewController.swift */,
+				3C99053A2566453B00B76D2E /* TradeViewController.swift */,
+				3C12BD812563674B006E2040 /* ProjectIntroViewController.swift */,
+				3C61CF6F256251BC004369D4 /* GEProjectViewController.swift */,
+				3C12BD0A25627807006E2040 /* RuleTableViewController.swift */,
+				3C12BD042562721D006E2040 /* GEProjectDetailViewController.swift */,
+				3C61CF6B256248F6004369D4 /* TableViewController.swift */,
 				3C8AEE2324D8FB14002DFBE5 /* SignalProducerTest.swift */,
+				3C99053E2566563B00B76D2E /* CCCCViewController.swift */,
 				29EB253C24C81F2D00F969A4 /* TT.swift */,
 			);
 			path = Home;
@@ -262,6 +346,7 @@
 		29EB252724C7DD4F00F969A4 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				3C990546256696B300B76D2E /* Trade */,
 				3C68C7F024EB768F0051BB4F /* View */,
 				29EB255124C833B200F969A4 /* Account */,
 				29EB253024C7DDE700F969A4 /* GEMineViewController.swift */,
@@ -295,7 +380,9 @@
 			children = (
 				29EB255A24C846B300F969A4 /* LoginViewController.swift */,
 				3CA8D7A024ECC407001AFB4E /* RegistViewController.swift */,
+				3C12BDCB2563CA1A006E2040 /* FindPasswordViewController.swift */,
 				3CA8D7A224ECF7AA001AFB4E /* LoginViewModel.swift */,
+				3C9904F72564DCB200B76D2E /* MineViewModel.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -355,12 +442,57 @@
 			path = GEBlockChainTests;
 			sourceTree = "<group>";
 		};
+		3C12BD3825629A9F006E2040 /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				3C12BD3925629AAC006E2040 /* HeaderPowerView.xib */,
+			);
+			path = Xib;
+			sourceTree = "<group>";
+		};
+		3C12BD8B25639EAB006E2040 /* WRNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				3C12BD8C25639EAB006E2040 /* WRNavigationBar.swift */,
+				3C12BD8D25639EAB006E2040 /* WRCustomNavigationBar.swift */,
+				3C12BD8E25639EAB006E2040 /* WRCycleScrollView */,
+			);
+			path = WRNavigationBar;
+			sourceTree = "<group>";
+		};
+		3C12BD8E25639EAB006E2040 /* WRCycleScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				3C12BD8F25639EAB006E2040 /* WRProxy.swift */,
+				3C12BD9025639EAB006E2040 /* WRCycleScrollView.swift */,
+				3C12BD9125639EAB006E2040 /* WRCycleCell.swift */,
+			);
+			path = WRCycleScrollView;
+			sourceTree = "<group>";
+		};
+		3C12BDBE2563B3D1006E2040 /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				3C12BDC52563B416006E2040 /* MineIntroView.xib */,
+			);
+			path = Xib;
+			sourceTree = "<group>";
+		};
+		3C61CEA525621735004369D4 /* Third */ = {
+			isa = PBXGroup;
+			children = (
+				3C12BD8B25639EAB006E2040 /* WRNavigationBar */,
+			);
+			path = Third;
+			sourceTree = "<group>";
+		};
 		3C68C7F024EB768F0051BB4F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3C68C7F124EB76B90051BB4F /* MineTableHeaderView.swift */,
+				3C12BDBE2563B3D1006E2040 /* Xib */,
 				3C68C7F324EBAD750051BB4F /* MineTableViewCell.swift */,
 				3C68C7F724EBC4CC0051BB4F /* MineOrderTableViewCell.swift */,
+				3C12BDBF2563B40C006E2040 /* MineIntroView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -400,10 +532,16 @@
 		3C8AEE1224D17129002DFBE5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3C12BD3825629A9F006E2040 /* Xib */,
 				3C8AEE1324D171A3002DFBE5 /* AssetsIndexTableHeaderView.swift */,
 				3C8AEE1724D17E22002DFBE5 /* AssetCell.swift */,
 				3C8AEE2124D2BB9E002DFBE5 /* AssetSectionView.swift */,
 				3C8AEE1524D1727B002DFBE5 /* BannerView.swift */,
+				3C61CF67256238CB004369D4 /* DemoTableViewCell.swift */,
+				3C12BD3425629A93006E2040 /* HeaderPowerView.swift */,
+				3C99051025661C1D00B76D2E /* HomeHeaderView.swift */,
+				3C99052825662E3200B76D2E /* HomeAssestsCell.swift */,
+				3C9905422566623300B76D2E /* TradeSortArrowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -411,7 +549,11 @@
 		3C8AEE1924D29746002DFBE5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3C8AEDF124CA7D9F002DFBE5 /* UIView.swift */,
+				3C8AEDF324CA8F0A002DFBE5 /* UIButton.swift */,
+				3C42811924EE14B700221D08 /* UILabel.swift */,
 				3C8AEE1A24D2975A002DFBE5 /* TableView.swift */,
+				3C61CE92255EAD16004369D4 /* IQProgressBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -420,6 +562,9 @@
 			isa = PBXGroup;
 			children = (
 				3C8AEE1F24D2AB54002DFBE5 /* BaseCell.swift */,
+				3C12BDB22563A88B006E2040 /* IQTabBarItemContentView.swift */,
+				3C12BDB62563A945006E2040 /* IQBouncesItemContentView.swift */,
+				3C12BDBA2563A995006E2040 /* IQIrregularityItemContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -430,6 +575,8 @@
 				3C94025D2510ABC700783AA9 /* LoadNib */,
 				3C9402602510ABC700783AA9 /* Localization */,
 				3C9402692510ABC700783AA9 /* UIView+Positioning.swift */,
+				3C61CF61256220AA004369D4 /* UIView+Constraints.swift */,
+				3C9402712510B10C00783AA9 /* Device.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -450,6 +597,18 @@
 				3C9402682510ABC700783AA9 /* LocalizeFuncs.swift */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		3C990546256696B300B76D2E /* Trade */ = {
+			isa = PBXGroup;
+			children = (
+				3C990547256696F600B76D2E /* TradeOrderContainerViewController.swift */,
+				3C99054B2566979200B76D2E /* TraderOrderBuyContrainerViewController.swift */,
+				3C99054F256697AA00B76D2E /* TradeOrderSellContainerViewController.swift */,
+				3C99055325669B1000B76D2E /* OrderBuyViewController.swift */,
+				3C99055725669B2700B76D2E /* OrderSellViewController.swift */,
+			);
+			path = Trade;
 			sourceTree = "<group>";
 		};
 		5419D5868559D7E2D69644C8 /* Frameworks */ = {
@@ -564,6 +723,9 @@
 				3C8AEDF924CAD964002DFBE5 /* Localization.strings in Resources */,
 				29EB252324C7DCE000F969A4 /* Assets.xcassets in Resources */,
 				29F3F61D24C14B2400096556 /* Main.storyboard in Resources */,
+				3C12BDC62563B416006E2040 /* MineIntroView.xib in Resources */,
+				3C99052525661DEC00B76D2E /* DIN Alternate Bold.ttf in Resources */,
+				3C12BD3A25629AAC006E2040 /* HeaderPowerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,42 +810,69 @@
 				3C8AEDF224CA7D9F002DFBE5 /* UIView.swift in Sources */,
 				29EB254D24C830F400F969A4 /* HBDNavigationBar.m in Sources */,
 				29EB254E24C830F400F969A4 /* HBDNavigationController.m in Sources */,
+				3C99053B2566453B00B76D2E /* TradeViewController.swift in Sources */,
+				3C9402722510B10C00783AA9 /* Device.swift in Sources */,
+				3C61CF68256238CB004369D4 /* DemoTableViewCell.swift in Sources */,
 				29EB252F24C7DDDC00F969A4 /* GEInfoViewController.swift in Sources */,
 				3C784660250618E7006284B5 /* TableView+Reactive.swift in Sources */,
 				3C8AEE1424D171A3002DFBE5 /* AssetsIndexTableHeaderView.swift in Sources */,
+				3C99051125661C1D00B76D2E /* HomeHeaderView.swift in Sources */,
 				29F3F61A24C14B2400096556 /* ViewController.swift in Sources */,
+				3C12BD9625639EAB006E2040 /* WRCycleCell.swift in Sources */,
 				29EB255B24C846B300F969A4 /* LoginViewController.swift in Sources */,
+				3C12BD9A25639EED006E2040 /* IQNavigationViewController.swift in Sources */,
 				29EB253524C7E07300F969A4 /* StartupCommandsBuilder.swift in Sources */,
 				3C8AEE2424D8FB15002DFBE5 /* SignalProducerTest.swift in Sources */,
+				3C12BDCC2563CA1A006E2040 /* FindPasswordViewController.swift in Sources */,
 				3C8AEE1624D1727B002DFBE5 /* BannerView.swift in Sources */,
 				3C8AEDFF24CFC9AF002DFBE5 /* NetInter+Typealias.swift in Sources */,
 				29EB253124C7DDE700F969A4 /* GEMineViewController.swift in Sources */,
 				3C94026E2510ABC700783AA9 /* LocalizationManager.swift in Sources */,
 				3C94026A2510ABC700783AA9 /* StoryboardController.swift in Sources */,
+				3C12BD052562721D006E2040 /* GEProjectDetailViewController.swift in Sources */,
+				3C12BD822563674B006E2040 /* ProjectIntroViewController.swift in Sources */,
+				3C99055425669B1000B76D2E /* OrderBuyViewController.swift in Sources */,
+				3C99053F2566563B00B76D2E /* CCCCViewController.swift in Sources */,
+				3C990548256696F600B76D2E /* TradeOrderContainerViewController.swift in Sources */,
 				3C8AEE2224D2BB9E002DFBE5 /* AssetSectionView.swift in Sources */,
 				29EB254C24C830F400F969A4 /* UIViewController+HBD.m in Sources */,
+				3C9905302566442500B76D2E /* TradeContainerViewController.swift in Sources */,
 				3C42811A24EE14B700221D08 /* UILabel.swift in Sources */,
 				3C8AEE0F24D00BB0002DFBE5 /* ViewModel.swift in Sources */,
 				3C8AEE1124D162FA002DFBE5 /* Toast.swift in Sources */,
 				29EB252B24C7DDBF00F969A4 /* GEHomeViewController.swift in Sources */,
-				3C68C7F224EB76B90051BB4F /* MineTableHeaderView.swift in Sources */,
+				3C12BD3525629A93006E2040 /* HeaderPowerView.swift in Sources */,
 				29EB255824C835B100F969A4 /* Boards.swift in Sources */,
 				3C8AEDF424CA8F0A002DFBE5 /* UIButton.swift in Sources */,
+				3C12BDB32563A88B006E2040 /* IQTabBarItemContentView.swift in Sources */,
+				3C99054C2566979200B76D2E /* TraderOrderBuyContrainerViewController.swift in Sources */,
+				3C12BDBB2563A995006E2040 /* IQIrregularityItemContentView.swift in Sources */,
 				3C94026F2510ABC700783AA9 /* LocalizeFuncs.swift in Sources */,
 				29EB253B24C80B4500F969A4 /* IQStrings.swift in Sources */,
 				3C78465E25061712006284B5 /* ReactiveExtension.swift in Sources */,
+				3C61CE93255EAD16004369D4 /* IQProgressBar.swift in Sources */,
+				3C12BD9425639EAB006E2040 /* WRProxy.swift in Sources */,
 				3CA8D7A124ECC407001AFB4E /* RegistViewController.swift in Sources */,
+				3C99055825669B2700B76D2E /* OrderSellViewController.swift in Sources */,
 				3C8AEE1824D17E22002DFBE5 /* AssetCell.swift in Sources */,
 				3C8AEE0D24D00803002DFBE5 /* NetAssetsBusiness.swift in Sources */,
+				3C990550256697AA00B76D2E /* TradeOrderSellContainerViewController.swift in Sources */,
 				3C94026B2510ABC700783AA9 /* XibView.swift in Sources */,
 				3CA8D7A324ECF7AA001AFB4E /* LoginViewModel.swift in Sources */,
+				3C12BD9325639EAB006E2040 /* WRCustomNavigationBar.swift in Sources */,
 				29EB252124C7D8CF00F969A4 /* GETabBarViewController.swift in Sources */,
+				3C9905432566623300B76D2E /* TradeSortArrowView.swift in Sources */,
+				3C12BDC02563B40C006E2040 /* MineIntroView.swift in Sources */,
 				29EB253924C8089600F969A4 /* Colorful.swift in Sources */,
+				3C61CF70256251BC004369D4 /* GEProjectViewController.swift in Sources */,
 				3C8AEE0924CFFF6D002DFBE5 /* NetCer.swift in Sources */,
 				29EB253724C7EBA000F969A4 /* Appearance.swift in Sources */,
+				3C99050D256612F600B76D2E /* HomeViewController.swift in Sources */,
 				3C8AEE0324CFD055002DFBE5 /* NetProvider.swift in Sources */,
+				3C61CF62256220AA004369D4 /* UIView+Constraints.swift in Sources */,
 				29EB255024C8314900F969A4 /* NavigationController.swift in Sources */,
 				3C68C7F824EBC4CC0051BB4F /* MineOrderTableViewCell.swift in Sources */,
+				3C61CF6C256248F6004369D4 /* TableViewController.swift in Sources */,
 				3C68C7F424EBAD750051BB4F /* MineTableViewCell.swift in Sources */,
 				29EB252924C7DD8A00F969A4 /* GEBaseViewController.swift in Sources */,
 				3C8AEE2024D2AB54002DFBE5 /* BaseCell.swift in Sources */,
@@ -691,13 +880,20 @@
 				3C9402702510ABC700783AA9 /* UIView+Positioning.swift in Sources */,
 				29F3F61624C14B2400096556 /* AppDelegate.swift in Sources */,
 				29EB252D24C7DDCD00F969A4 /* GEMarketViewController.swift in Sources */,
+				3C12BD9525639EAB006E2040 /* WRCycleScrollView.swift in Sources */,
+				3C9904F82564DCB200B76D2E /* MineViewModel.swift in Sources */,
 				29EB253D24C81F2D00F969A4 /* TT.swift in Sources */,
 				3CA8D7A524ED0D49001AFB4E /* NetLoginRegistBussiness.swift in Sources */,
+				3C9905342566444700B76D2E /* SubscribeViewController.swift in Sources */,
 				3C8AEE1B24D2975A002DFBE5 /* TableView.swift in Sources */,
 				3C8AEE0724CFD293002DFBE5 /* NResult.swift in Sources */,
+				3C99052925662E3200B76D2E /* HomeAssestsCell.swift in Sources */,
 				3C8AEDF624CAD240002DFBE5 /* Language.swift in Sources */,
 				3C8AEE1D24D2998D002DFBE5 /* iPhone.swift in Sources */,
 				3C8AEE0524CFD22D002DFBE5 /* NetProvider+Methods.swift in Sources */,
+				3C12BD9225639EAB006E2040 /* WRNavigationBar.swift in Sources */,
+				3C12BDB72563A945006E2040 /* IQBouncesItemContentView.swift in Sources */,
+				3C12BD0B25627807006E2040 /* RuleTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -870,6 +1066,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_MODULE_DEBUGGING = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U2NQJUPG3R;
 				INFOPLIST_FILE = GEBlockChain/Info.plist;
@@ -883,7 +1080,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/GEBlockChain/Config/GEBlockChain-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -893,6 +1090,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_MODULE_DEBUGGING = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U2NQJUPG3R;
 				INFOPLIST_FILE = GEBlockChain/Info.plist;
@@ -905,7 +1103,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/GEBlockChain/Config/GEBlockChain-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
