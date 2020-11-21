@@ -12,6 +12,7 @@ internal enum Boards: String {
     
     case Main
     case Login
+    case Pay
      
     var board: UIStoryboard {
         return Board(self)
@@ -34,6 +35,8 @@ func Board(_ board: Boards) -> UIStoryboard {
 /// - Returns: 指定的控制器
 func Board(_ board: Boards, _ vc: UIViewController.Type) -> UIViewController {
     return Board(board).destination(vc)
+    
+
 }
 
 

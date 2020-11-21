@@ -34,6 +34,7 @@ struct InitialViewControllerCommand: Command {
         
         let tabBarController = ESTabBarController()
         tabBarController.tabBar.shadowImage = UIImage(named: "tabbarBackground")
+        
         let v1 = HomeViewController.board()
         let v2 = TradeContainerViewController()
         let v3 = GEMineViewController()

@@ -16,6 +16,13 @@ class HomeViewController: GEBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
+        let titleView = UILabel()
+        titleView.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        titleView.textColor = Pen.label(.black)
+        titleView.text = "首页"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: titleView)
+//        navigationItem.titleView = UIStackView(arrangedSubviews: [titleView, UIView()])
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200
@@ -81,6 +88,6 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        self.navigationController?.pushViewController(TradeContainerViewController(), animated: true)
+        self.navigationController?.pushViewController(ProjectIntroViewController.boardC("项目详情"), animated: true)
     }
 }

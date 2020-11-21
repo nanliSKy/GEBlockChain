@@ -11,27 +11,48 @@ import ReactiveSwift
 
 class MineOrderTableViewCell: BaseCell {
  
-    lazy var selectControllerIndex = MutableProperty(0)
+    
+//    标记是交易订单或认购订单
+    private var titleContent: UILabel = {
+        let order = UILabel()
+        order.text = "我的交易".localized
+        order.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        order.textColor = Pen.label(.primary)
+        return order
+    }()
+    var isTradeOrder: Bool = true {
+        didSet {
+            titleContent.text = isTradeOrder ? "我的交易".localized : "我的认购".localized
+        }
+    }
+
+    lazy var selectControllerIndex = MutableProperty((true, 0))
     lazy var mineC:[MineC] = {
+        
             var c = [MineC]()
+        if isTradeOrder {
             let s1 = MineC(content: "待付款".localized, iamge: "mine_paying")
             c.append(s1)
             let s2 = MineC(content: "已取消".localized, iamge: "mine_order_cancel")
             c.append(s2)
             let s3 = MineC(content: "已完成".localized, iamge: "mine_order_done")
             c.append(s3)
-//            let s4 = MineC(content: "已取消".localized, iamge: "mine_order_cancel")
-//            c.append(s4)
-//            let s5 = MineC(content: "已完成".localized, iamge: "mine_order_done")
-//            c.append(s5)
-         
+        }else {
+            let s1 = MineC(content: "认购中".localized, iamge: "mine_paying")
+            c.append(s1)
+            let s2 = MineC(content: "已成功".localized, iamge: "mine_order_cancel")
+            c.append(s2)
+            let s3 = MineC(content: "已失败".localized, iamge: "mine_order_done")
+            c.append(s3)
+        }
+            
             return c
         }()
         let collectionView: UICollectionView = {
             let layout = UICollectionViewFlowLayout.init()
             layout.minimumInteritemSpacing = 0
             layout.minimumLineSpacing = 0
-            layout.itemSize = CGSize(width: (Int.sw()-30)/3.0, height: 90.s6w())
+            layout.itemSize = CGSize(width: (Int.sw()-30)/3.0, height: 85)
             let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
             collectionView.register(MineOrderCollectionViewCell.self)
             collectionView.backgroundColor = .white
@@ -65,19 +86,15 @@ class MineOrderTableViewCell: BaseCell {
             backView.addSubview(orderContainer)
             orderContainer.snp.makeConstraints { (make) in
                 make.left.right.top.equalTo(backView)
-                make.height.equalTo(40.s6h())
+                make.height.equalTo(40)
             }
             
             
-//            let order = UILabel()
-//            order.text = "我的订单".localized
-//            order.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-//            order.textColor = Pen.label(.primary)
-//            orderContainer.addSubview(order)
-//            order.snp.makeConstraints { (make) in
-//                make.top.bottom.equalToSuperview()
-//                make.left.equalTo(backView.snp.left).offset(20)
-//            }
+            orderContainer.addSubview(titleContent)
+            titleContent.snp.makeConstraints { (make) in
+                make.top.bottom.equalToSuperview()
+                make.left.equalTo(backView.snp.left).offset(20)
+            }
             
             let button = UIButton()
             button.setTitleColor(Pen.view(.basement), for: .normal)
@@ -98,7 +115,7 @@ class MineOrderTableViewCell: BaseCell {
                 make.height.equalTo(1)
             }
             
-            
+            collectionView.isScrollEnabled = false
             collectionView.dataSource = self
             collectionView.delegate = self
             backView.addSubview(collectionView)
@@ -130,8 +147,9 @@ class MineOrderTableViewCell: BaseCell {
    
 
 extension MineOrderTableViewCell: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.selectControllerIndex.value = indexPath.row
+        self.selectControllerIndex.value = (isTradeOrder, indexPath.row)
     }
 }
 

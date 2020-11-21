@@ -17,10 +17,10 @@ class TradeOrderSellContainerViewController: GEBaseViewController {
         super.viewDidLoad()
 
         let viewControllers = [
-            OrderSellViewController.boardC("全部", 0),
-            OrderSellViewController.boardC("待收款", 1),
-            OrderSellViewController.boardC("已成交", 2),
-            OrderSellViewController.boardC("已取消", 3)
+            OrderSellViewController.board("全部", 0),
+            OrderSellViewController.board("待收款", 1),
+            OrderSellViewController.board("已成交", 2),
+            OrderSellViewController.board("已取消", 3)
             ]
         
         let pagingViewController = PagingViewController(viewControllers: viewControllers)

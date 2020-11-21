@@ -17,6 +17,7 @@ class IQIrregularityItemContentView: IQBouncesItemContentView {
         highlightTextColor = Pen.view(.basement)
         iconColor = UIColor.init(white: 175.0 / 255.0, alpha: 1.0)
         highlightIconColor = Pen.view(.basement)
+        
     }
     
     public required init?(coder aDecoder: NSCoder) {

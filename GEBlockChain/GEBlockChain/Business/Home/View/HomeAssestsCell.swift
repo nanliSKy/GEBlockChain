@@ -22,13 +22,34 @@ class HomeAssestsCell: UITableViewCell {
     @IBOutlet weak var assestPrice: UILabel!
     @IBOutlet weak var hightlightContainer: UIStackView!
     
+    @IBOutlet weak var progressContainer: UIView!
+    private lazy var stateView: UIImageView = {
+        let state = UIImageView(image: UIImage(named: "state_subscribe_reffer"))
+        return state
+    }()
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        progressContainer.backgroundColor = .white
+        
         self.selectionStyle = .none
+        contentView.addSubview(stateView)
+        stateView.snp.makeConstraints { (make) in
+            make.right.top.equalTo(contentView)
+        }
         addHightlightsView()
+        
+        let bar = StripeProgressBar(frame: .zero)
+        progressContainer.addSubview(bar)
+        bar.snp.makeConstraints { (make) in
+            make.edges.equalTo(progressContainer)
+        }
+        bar.progress = 0.5
+        
         // Initialization code
     }
+    
+    
     
     func addHightlightsView() {
         let l: UILabelPadding = UILabelPadding()

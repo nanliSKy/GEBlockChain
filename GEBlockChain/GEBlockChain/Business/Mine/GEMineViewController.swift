@@ -28,7 +28,7 @@ class GEMineViewController: GEBaseViewController {
     
     private lazy var headerView: MineIntroView = {
         let view = MineIntroView()
-        view.height = Device.compareHeightTo6s(228)
+        view.height = 290
         return view
     }()
 //    let mineTableHeaderView = MineTableHeaderView(frame: CGRect(x: 0, y: 0, width: Int.sw(), height: 245.s6h()))
@@ -47,7 +47,8 @@ class GEMineViewController: GEBaseViewController {
         tableView.backgroundColor = Pen.view(.viewBackgroundColor)
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
-            make.top.bottom.left.right.equalTo(view)
+            make.top.left.right.equalTo(view)
+            make.bottom.equalTo(view.snp.bottom).offset(-Device.tabBarHeight)
         }
         
         tableView.tableHeaderView = headerView
@@ -67,21 +68,41 @@ class GEMineViewController: GEBaseViewController {
 extension GEMineViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell: MineTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+            cell.selectControllerIndex.signal.observeValues { [unowned self] (isTradeOrder, index) in
+            switch index {
+                case 0:
+                    self.navigationController?.pushViewController(AssetsBalanceViewController.board("账户余额"), animated: true)
+                    break
+                case 1:
+                    self.navigationController?.pushViewController(AssetsFlowRecordViewController.board("资金明细"), animated: true)
+                    break
+                case 2:
+                    self.navigationController?.pushViewController(PlaceAnOrderViewController.board("提交订单"), animated: true)
+                    break
+                case 3:
+                    self.navigationController?.pushViewController(GEMarketViewController(), animated: true)
+                    break
+                    
+            default:
+                    self.navigationController?.pushViewController(AssetsOwnerViewController.board("我的资产"), animated: true)
+                    break
+                }
+            }
             return cell
         }
         
-        let cell: MineOrderTableViewCell = tableView.dequeueReusableCell(for: indexPath)
-        
-        cell.selectControllerIndex.signal.observeValues { [unowned self] (index) in
-            self.navigationController?.pushViewController(TradeOrderContainerViewController(), animated: true)
+        let cell: MineOrderTableViewCell = MineOrderTableViewCell.init(style: .default, reuseIdentifier: "Cell\(indexPath.row)")
+            cell.isTradeOrder = indexPath.row == 1 ? true : false
+            cell.selectControllerIndex.signal.observeValues { [unowned self] (isTradeOrder, index) in
+                self.navigationController?.pushViewController(TradeOrderContainerViewController(), animated: true)
             
-        }
+            }
         return cell
         
     }
@@ -91,9 +112,9 @@ extension GEMineViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return 180.s6h()
+            return 190
         }else {
-            return 130.s6h()
+            return 145
         }
     }
 }

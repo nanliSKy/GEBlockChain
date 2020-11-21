@@ -40,7 +40,7 @@ final class Colorful {
     }
 
     enum Label: Int, ColorDisplay {
-        case primary = 0, secondary, red, blue, yellow
+        case primary = 0, secondary, red, blue, yellow, black
         
         var colorful: UIColor? {
             switch self {
@@ -49,6 +49,7 @@ final class Colorful {
             case .red: return "#F71B1B".colorful()
             case .blue: return "#6FA8E3".colorful()
             case .yellow: return "#F7961B".colorful()
+            case .black: return "#444444".colorful()
             }
             
         }

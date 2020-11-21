@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReactiveSwift
 
 class MineTableViewCell: BaseCell {
 
@@ -34,14 +35,15 @@ class MineTableViewCell: BaseCell {
         let layout = UICollectionViewFlowLayout.init()
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
-        layout.itemSize = CGSize(width: (Int.sw()-30)/4.0, height: 90.s6w())
+        layout.itemSize = CGSize(width: (Int.sw()-30)/4.0, height: 85)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(MineCollectionViewCell.self)
 //        collectionView.register(MineCollectionViewCell.self, forCellWithReuseIdentifier: MineCollectionViewCell.className())
         collectionView.backgroundColor = .white
-        collectionView.layer.cornerRadius = 8
         return collectionView
     }()
+    
+    lazy var selectControllerIndex = MutableProperty((true, 0))
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -66,11 +68,12 @@ class MineTableViewCell: BaseCell {
             make.edges.equalTo(UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15))
         }
         
+        collectionView.isScrollEnabled = false
         collectionView.dataSource = self
-
+        collectionView.delegate = self
         backView.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.edges.equalTo(backView)
         }
         
     }
@@ -92,6 +95,14 @@ extension MineTableViewCell: UICollectionViewDataSource {
         return cell
     }
 }
+
+extension MineTableViewCell: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectControllerIndex.value = (true, indexPath.row)
+    }
+}
+
 
 class MineCollectionViewCell: UICollectionViewCell {
     
@@ -124,7 +135,7 @@ class MineCollectionViewCell: UICollectionViewCell {
         imageView.snp.makeConstraints { (make) in
             make.width.height.equalTo(30)
             make.centerX.equalTo(contentView.snp.centerX)
-            make.top.equalTo(contentView.snp.top).offset(30)
+            make.top.equalTo(contentView.snp.top).offset(12)
         }
         contentView.addSubview(content)
         content.snp.makeConstraints { (make) in

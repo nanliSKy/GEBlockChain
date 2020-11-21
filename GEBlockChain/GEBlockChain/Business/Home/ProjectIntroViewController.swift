@@ -12,7 +12,7 @@ import LTScrollView
 class ProjectIntroViewController: UIViewController {
 
     private lazy var headerView: IntroHeaderView = {
-        let view = IntroHeaderView.init(frame: CGRect(x: 0, y: 0, width: Device.width, height: 510))
+        let view = IntroHeaderView.init()
         return view
     }()
     
@@ -53,6 +53,11 @@ class ProjectIntroViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        hbd_tintColor = .white
+        hbd_barShadowHidden = true
+        hbd_barTintColor = Pen.view(.basement)
+        hbd_titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
         
         self.automaticallyAdjustsScrollViewInsets = false
         view.addSubview(advancedManager)
@@ -61,9 +66,11 @@ class ProjectIntroViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }
+
 
 
 extension ProjectIntroViewController: LTAdvancedScrollViewDelegate {
@@ -75,4 +82,15 @@ extension ProjectIntroViewController: LTAdvancedScrollViewDelegate {
     
     func glt_scrollViewOffsetY(_ offsetY: CGFloat) {
     }
+}
+
+extension ProjectIntroViewController {
+    
+    static func boardC(_ title: String) -> ProjectIntroViewController {
+        let vc: ProjectIntroViewController = ProjectIntroViewController()
+        vc.title = title
+        return vc
+    }
+    
+    
 }
