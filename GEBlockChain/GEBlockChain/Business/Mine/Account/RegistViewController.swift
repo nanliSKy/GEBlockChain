@@ -21,9 +21,9 @@ class RegistViewController: GEBaseViewController {
     @IBOutlet weak var readClick: UIButton!
     @IBOutlet weak var readContext: UILabel!
     @IBOutlet weak var sendCode: UIButton!
+    @IBOutlet weak var tfInvateCode: UITextField!
     
-    let viewModel = LoginViewModel.init()
-    
+    private let mineViewModel = MineViewModel()
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -32,33 +32,43 @@ class RegistViewController: GEBaseViewController {
         attr.addAttributes([.underlineStyle: NSUnderlineStyle.single.rawValue], range: NSRange(location: 0, length: attr.length))
         loginAction.attributedText = attr
         
+        regist.vshadowColor(radius: 4, opacity: 0.5, s: CGSize(width: 0, height: 0), c: Pen.view(.basement))
+        
+        mineViewModel.inputRegist(account: tfPhone, code: tfCode, password: tfPassword, invateCode: tfInvateCode)
         
         
-        
-        //2. 闭包传值
-        //        sender.reactive.pressed = CocoaAction(viewModel.smsAction) { [weak self] _ in
-        //            return self?.tfphone.text ?? ""
-        //        }
-        
-        
-//        regist.reactive.controlEvents(.touchUpInside).observeValues { [weak self] (sender) in
-//            self?.registClick()
+
+//        regist.reactive.pressed = CocoaAction(viewModel.registAction) {  _ in
+//            return (self.tfPhone.text ?? "", self.tfCode.text ?? "", self.tfPassword.text ?? "")
 //        }
 //
-        regist.reactive.pressed = CocoaAction(viewModel.registAction) {  _ in
-            return (self.tfPhone.text ?? "", self.tfCode.text ?? "", self.tfPassword.text ?? "")
+//        Toast.show(viewModel.registAction.errors)
+//
+//
+//        viewModel.registAction.events.observeResult { (event) in
+//            if case let Result.success(value) = event {
+//                print("success: \(value)")
+//            }
+//            if case let Result.failure(error) = event {
+//                print("error: \(error)")
+//            }
+//        }
+//
+        mineViewModel.sendCodeAction.values.observeValues { [unowned self] _ in
+            Toast.show(message: "验证码已发送")
+            self.sendCode.timerCountDuration(duration: 60)
         }
         
-        Toast.show(viewModel.registAction.errors)
+        sendCode.reactive.controlEvents(.touchUpInside).observeValues { [unowned self] (sender) in
+            self.sendCodeAction(sender)
+        }
         
-        
-        viewModel.registAction.events.observeResult { (event) in
-            if case let Result.success(value) = event {
-                print("success: \(value)")
-            }
-            if case let Result.failure(error) = event {
-                print("error: \(error)")
-            }
+        mineViewModel.regiserAction.values.observeValues { (_) in
+            Toast.show(message: "注册成功")
+            self.navigationController?.popViewController(animated: true)
+        }
+        regist.reactive.controlEvents(.touchUpInside).observeValues { [unowned self] (sender) in
+            self.registerAction(sender)
         }
         // Do any additional setup after loading the view.
     }
@@ -68,11 +78,37 @@ class RegistViewController: GEBaseViewController {
         sender.isSelected = !sender.isSelected
     
     }
+    @IBAction func readProtocolAction(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        mineViewModel.validReadProtocol.value = sender.isSelected
+        
+    }
     
-   
+    private func sendCodeAction(_ sender: UIButton) {
+        
+        self.view.endEditing(true)
+        if (self.mineViewModel.enableCode().value) {
+            self.mineViewModel.sendCodeAction.apply().start()
+        }else {
+            Toast.show(message: self.mineViewModel.err.value)
+        }
+        Toast.show(mineViewModel.sendCodeAction.errors)
+    }
+    private func registerAction(_ sender: UIButton) {
+        
+        self.view.endEditing(true)
+        if (self.mineViewModel.enableRegist().value) {
+            self.mineViewModel.regiserAction.apply().start()
+        }else {
+            Toast.show(message: self.mineViewModel.err.value)
+        }
+        Toast.show(mineViewModel.regiserAction.errors)
+    }
+    
+    
     func registClick() {
         
-        regist.reactive.pressed = CocoaAction(viewModel.registAction, input: (tfPhone.text ?? "", tfCode.text ?? "", tfPassword.text ?? ""))
+//        regist.reactive.pressed = CocoaAction(viewModel.registAction, input: (tfPhone.text ?? "", tfCode.text ?? "", tfPassword.text ?? ""))
         
     }
 }

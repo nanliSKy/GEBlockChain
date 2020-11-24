@@ -61,7 +61,7 @@ extension AssetsOwnerViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        self.navigationController?.pushViewController(OrderEndSuccessViewController.board("订单支付"), animated: true)
+        self.navigationController?.pushViewController(OrderEndSuccessViewController.board(orderId: ""), animated: true)
     }
 }
 

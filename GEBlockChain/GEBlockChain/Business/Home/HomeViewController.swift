@@ -7,12 +7,14 @@
 //
 
 import UIKit
-
+import ReactiveSwift
 class HomeViewController: GEBaseViewController {
 
     @IBOutlet weak var headerView: HomeHeaderView!
     @IBOutlet weak var tableView: UITableView!
+    private var list = [TAssets]()
     
+    let viewModel = HomeAssetsViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,6 +29,19 @@ class HomeViewController: GEBaseViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200
         addGestureClick()
+        
+        
+//        viewModel.subscribeListAction.values.observeValues { [unowned self] (list) in
+//            self.list = list
+//            self.tableView.reloadData()
+//        }
+//        viewModel.subscribeListAction.values.observeResult { (result) in
+//
+//        }
+        
+        viewModel.executeIfPossible(nil)
+        
+        tableView.manage(by: viewModel)
         // Do any additional setup after loading the view.
     }
     
@@ -70,12 +85,16 @@ extension HomeViewController: UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModel.count
+//        return self.list.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: HomeAssestsCell = tableView.dequeueReusableCell(withIdentifier: "HomeAssestsCell") as! HomeAssestsCell
-        
+        let cell: HomeAssestsCell = tableView.dequeueReusableCell(for: indexPath)
+        let assets = viewModel.element(at: indexPath.row)
+        cell.assets = assets
+//        let assets = self.list[indexPath.row]
+//        print(assets)
         return cell
     }
 }
@@ -87,7 +106,7 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        self.navigationController?.pushViewController(ProjectIntroViewController.boardC("项目详情"), animated: true)
+        guard let assets = viewModel.element(at: indexPath.row) else { return  }
+        self.navigationController?.pushViewController(IndexProjectViewController.boardC(assets), animated: true)
     }
 }

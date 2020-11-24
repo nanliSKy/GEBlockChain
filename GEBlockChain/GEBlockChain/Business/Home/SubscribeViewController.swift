@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import MJRefresh
 
 class SubscribeViewController: GEBaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    private let manager = AssetsViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +27,19 @@ class SubscribeViewController: GEBaseViewController {
 //        tableView.estimatedRowHeight = 200
 
         // Do any additional setup after loading the view.
+        
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak manager] in
+            manager?.executeIfPossible(0, header: true)
+        })
+        
+        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { [weak manager] in
+            manager?.executeIfPossible(2, header: false)
+            
+        })
+        
+        tableView.manage(by: manager)
+
+        manager.dataHandle()
     }
     
 
@@ -34,12 +50,13 @@ extension SubscribeViewController: UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return manager.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: HomeAssestsCell = tableView.dequeueReusableCell(withIdentifier: "HomeAssestsCell") as! HomeAssestsCell
-        
+        let assets = manager.element(at: indexPath.row)
+        cell.assets = assets
         return cell
     }
 }

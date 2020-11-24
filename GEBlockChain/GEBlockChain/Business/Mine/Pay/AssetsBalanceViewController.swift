@@ -16,9 +16,18 @@ class AssetsBalanceViewController: GEBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        getFundBalance()
         // Do any additional setup after loading the view.
     }
     
+    
+    private func getFundBalance() {
+        let viewModel = FundViewModel()
+        viewModel.fundBalance.values.observeValues { [unowned self] (balance) in
+            balanceView.text = balance.avaliable
+        }
+        viewModel.fundBalance.apply().start()
+    }
 
 }
 

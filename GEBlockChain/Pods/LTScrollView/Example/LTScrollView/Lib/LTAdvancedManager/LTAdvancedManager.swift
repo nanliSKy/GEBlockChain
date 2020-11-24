@@ -127,7 +127,7 @@ extension LTAdvancedManager {
 extension LTAdvancedManager {
     
     //设置ScrollView的contentInset
-    private func scrollInsets(_ currentVC: UIViewController ,_ up: CGFloat) {
+     func scrollInsets(_ currentVC: UIViewController ,_ up: CGFloat) {
         currentVC.glt_scrollView?.contentInset = UIEdgeInsets(top: up, left: 0, bottom: 0, right: 0)
         currentVC.glt_scrollView?.scrollIndicatorInsets = UIEdgeInsets(top: up, left: 0, bottom: 0, right: 0)
     }

@@ -81,6 +81,8 @@ extension ProjectIntroViewController: LTAdvancedScrollViewDelegate {
     }
     
     func glt_scrollViewOffsetY(_ offsetY: CGFloat) {
+        
+        print("选中了 -> \(offsetY)")
     }
 }
 
@@ -91,6 +93,4 @@ extension ProjectIntroViewController {
         vc.title = title
         return vc
     }
-    
-    
 }

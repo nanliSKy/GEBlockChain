@@ -28,7 +28,7 @@ extension UIButton {
     ///   - duration: 倒计时时长
     ///   - disableBackgroundColor: 不可用状态背景色
     ///   - disableTitleColor: 不可用状态 Title 颜色
-    func timerCountDuration(duration: Int, disableBackgroundColor: UIColor = Pen.view(.basement), disableTitleColor: UIColor = Pen.view(.basement)) {
+    func timerCountDuration(duration: Int, disableBackgroundColor: UIColor = .white, disableTitleColor: UIColor = Pen.view(.basement)) {
         var times = duration
         let normalBackground = backgroundColor
         

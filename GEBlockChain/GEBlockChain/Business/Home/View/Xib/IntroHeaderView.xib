@@ -19,6 +19,8 @@
                 <outlet property="priceView" destination="Fwc-Ry-Fpx" id="xxq-w3-PBu"/>
                 <outlet property="rateView" destination="0a5-Fs-liV" id="Bff-jL-Uzk"/>
                 <outlet property="roundBackView" destination="bGA-nB-Z54" id="JVS-fx-7Ff"/>
+                <outlet property="segmentedControl" destination="pID-GP-8ZU" id="hk8-xA-NWz"/>
+                <outlet property="segmentedControlCheck" destination="7dV-iR-agA" id="xD7-Vf-hWZ"/>
                 <outlet property="timeView" destination="wHl-W5-YhX" id="hnF-as-n7B"/>
                 <outlet property="titleView" destination="dOU-O8-meE" id="kEd-6o-1UY"/>
             </connections>
@@ -163,9 +165,19 @@
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Li9-T9-bLU">
                             <rect key="frame" x="8" y="36" width="388" height="52"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pID-GP-8ZU" customClass="MASegmentedControl" customModule="GEBlockChain" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="388" height="52"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
+                            </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
+                                <constraint firstItem="pID-GP-8ZU" firstAttribute="top" secondItem="Li9-T9-bLU" secondAttribute="top" id="AUn-e4-qCa"/>
+                                <constraint firstItem="pID-GP-8ZU" firstAttribute="leading" secondItem="Li9-T9-bLU" secondAttribute="leading" id="Cpj-BU-q3b"/>
                                 <constraint firstAttribute="height" constant="52" id="h2z-sG-nty"/>
+                                <constraint firstAttribute="trailing" secondItem="pID-GP-8ZU" secondAttribute="trailing" id="iFU-TN-yHQ"/>
+                                <constraint firstAttribute="bottom" secondItem="pID-GP-8ZU" secondAttribute="bottom" id="kfu-xv-PhN"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -194,9 +206,21 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mxc-m9-m9I">
                     <rect key="frame" x="20" y="520" width="374" height="40"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7dV-iR-agA" customClass="MASegmentedControl" customModule="GEBlockChain" customModuleProvider="target">
+                            <rect key="frame" x="106" y="0.0" width="162" height="40"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="162" id="qtd-Ma-OBh"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.98431372549999996" green="0.98823529409999999" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="BIL-ga-uiH"/>
+                        <constraint firstItem="7dV-iR-agA" firstAttribute="top" secondItem="mxc-m9-m9I" secondAttribute="top" id="Bmx-mE-0zG"/>
+                        <constraint firstAttribute="bottom" secondItem="7dV-iR-agA" secondAttribute="bottom" id="CxU-bF-q0Q"/>
+                        <constraint firstItem="7dV-iR-agA" firstAttribute="centerX" secondItem="mxc-m9-m9I" secondAttribute="centerX" id="d4a-ll-pDh"/>
                     </constraints>
                 </view>
             </subviews>

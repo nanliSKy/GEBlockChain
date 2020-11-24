@@ -16,13 +16,30 @@ class OrderEndSuccessViewController: GEBaseViewController {
     @IBOutlet weak var appendAction: UIButton!
     @IBOutlet weak var sellAction: UIButton!
     @IBOutlet weak var titleContrainerView: UIView!
+    private var orderId = ""
+    private var order: PlaceOrderDetail?
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "订单支付"
         hbd_tintColor = .white
         hbd_barTintColor = Pen.view(.basement)
         hbd_titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
+        getOrderDetail()
         // Do any additional setup after loading the view.
+    }
+    
+    
+    private func getOrderDetail() {
+        let viewModel = PlaceOrderViewModel()
+        viewModel.placeOrderDetailAction.values.observeValues { [unowned self] (order) in
+            self.tableView.reloadData()
+            print(order)
+        }
+        
+        viewModel.placeOrderDetailAction.apply(orderId).start()
     }
 }
 
@@ -36,7 +53,24 @@ extension OrderEndSuccessViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: OrderMenuCell = tableView.dequeueReusableCell(for: indexPath)
         cell.titleView.text = menus[indexPath.row]
-       
+        cell.recommendView.isHidden = true
+        cell.actionView.isHidden = true
+        if indexPath.row == 0 {
+            cell.menuView.text = order?.orderId
+            cell.actionView.isHidden = false
+            cell.actionView.reactive.controlEvents(.touchUpOutside).observeValues { [unowned self] (_) in
+                let pastboard = UIPasteboard.general
+                pastboard.string = self.order?.orderId
+                Toast.show(message: "已复制")
+            }
+        }else if indexPath.row == 1 {
+            cell.menuView.text = order?.date.timeIntervalToStr(dateFormat: nil)
+        }else if indexPath.row == 2 {
+            cell.menuView.text = order?.quantity
+        }else if indexPath.row == 3 {
+            cell.menuView.textColor = "#FF2828".colorful()
+            cell.menuView.text = order?.total
+        }
         return cell
     }
 }
@@ -58,10 +92,9 @@ extension OrderEndSuccessViewController: UITableViewDelegate {
 
 extension OrderEndSuccessViewController {
     
-    static func board(_ title: String) -> OrderEndSuccessViewController {
+    static func board(orderId: String) -> OrderEndSuccessViewController {
         let vc: OrderEndSuccessViewController = Board(.Pay).destination(OrderEndSuccessViewController.self) as! OrderEndSuccessViewController
 
-        vc.title = title
         return vc
     }
     

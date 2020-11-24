@@ -57,3 +57,17 @@ extension String {
         return String(format: hash as String, arguments: [])
     }
 }
+
+
+extension TimeInterval {
+    func timeIntervalToStr( dateFormat: String?) ->String {
+        let date:NSDate = NSDate.init(timeIntervalSince1970: self/1000)
+        let formatter = DateFormatter.init()
+        if dateFormat == nil {
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        }else {
+            formatter.dateFormat = dateFormat
+        }
+        return formatter.string(from: date as Date)
+    }
+}

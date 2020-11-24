@@ -50,7 +50,6 @@ class LoginViewController: GEBaseViewController {
         
         mineViewModel.input(account: tfphone, passwordOrCode: tfcode)
         
-        mineViewModel.loginAction.values.observeValues {print("sssss")}
         loginButton.reactive.isEnabled <~ mineViewModel.loginAction.isExecuting.map{!$0}
         loginButton.reactive.controlEvents(.touchUpInside).observeValues { [unowned self] (sender) in
             self.loginAction(sender)
@@ -62,6 +61,14 @@ class LoginViewController: GEBaseViewController {
             self.code.timerCountDuration(duration: 60)
         }
     
+        mineViewModel.loginAction.values.observeValues { [unowned self] (token) in
+            Toast.show(message: "登录成功")
+            UserDefaults.standard.set(token.token, forKey: UTOKEN)
+            UserDefaults.standard.set(self.tfphone.text, forKey: UACCOUNT)
+            NotificationCenter.default.post(name: Notification.Name(NOTILOGINSUCCESS), object: nil)
+            self.dismiss(animated: true, completion: nil)
+        }
+        
         regist.reactive.controlEvents(.touchUpInside).observeValues { (sender) in
             print("regist call")
 

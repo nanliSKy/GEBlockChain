@@ -15,6 +15,7 @@ import ReactiveSwift
 
 class GEMineViewController: GEBaseViewController {
 
+    
     let tableView: UITableView = {
        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(cell: AssetCell.self)
@@ -31,7 +32,6 @@ class GEMineViewController: GEBaseViewController {
         view.height = 290
         return view
     }()
-//    let mineTableHeaderView = MineTableHeaderView(frame: CGRect(x: 0, y: 0, width: Int.sw(), height: 245.s6h()))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,16 +52,42 @@ class GEMineViewController: GEBaseViewController {
         }
         
         tableView.tableHeaderView = headerView
-        headerView.backClick.reactive.controlEvents(.touchUpInside).observeValues { [weak self] (sender) in
-            LoginViewController.showLoginVC(self)
-//            self?.present(LoginViewController.void(), animated: true, completion: nil)
-        }
-//        mineTableHeaderView.cert.reactive.controlEvents(.touchUpInside).observeValues { [weak self] (sender) in
-//            self?.present(LoginViewController.void(), animated: true, completion: nil)
+//        headerView.backClick.reactive.controlEvents(.touchUpInside).observeValues { [unowned self] (sender) in
+//            LoginViewController.showLoginVC(self)
 //        }
+        headerView.tap.reactive.stateChanged.observeValues { [unowned self] (tap) in
+            LoginViewController.showLoginVC(self)
+        }
+
+        NotificationCenter.default.addObserver(self, selector: #selector(getFundProfit), name: Notification.Name(NOTILOGINSUCCESS), object: nil)
+        getFundProfit()
         
     }
     
+    
+    /// 获取资产概况
+    @objc private func getFundProfit() {
+        let viewModel = FundViewModel()
+        viewModel.fundProfit.values.observeValues { [unowned self] (profit) in
+            self.headerView.profit = profit
+        }
+        viewModel.fundProfit.errors.observeResult { (result) in
+            if case let Result.success(value) = result {
+                if case let NetError.business(b) = value {
+                    if b.code == -2 {
+                        print(b.code)
+                    }
+                }
+            }
+        }
+        viewModel.fundProfit.apply().start()
+        
+    }
+    
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 
 }
 
@@ -75,6 +101,11 @@ extension GEMineViewController: UITableViewDataSource {
         if indexPath.row == 0 {
             let cell: MineTableViewCell = tableView.dequeueReusableCell(for: indexPath)
             cell.selectControllerIndex.signal.observeValues { [unowned self] (isTradeOrder, index) in
+                
+            guard UserDefaults.standard.string(forKey: UTOKEN) != nil else {
+                LoginViewController.showLoginVC(self)
+                return
+            }
             switch index {
                 case 0:
                     self.navigationController?.pushViewController(AssetsBalanceViewController.board("账户余额"), animated: true)
@@ -83,7 +114,7 @@ extension GEMineViewController: UITableViewDataSource {
                     self.navigationController?.pushViewController(AssetsFlowRecordViewController.board("资金明细"), animated: true)
                     break
                 case 2:
-                    self.navigationController?.pushViewController(PlaceAnOrderViewController.board("提交订单"), animated: true)
+                    self.navigationController?.pushViewController(PlaceAnOrderViewController.board(nil), animated: true)
                     break
                 case 3:
                     self.navigationController?.pushViewController(GEMarketViewController(), animated: true)

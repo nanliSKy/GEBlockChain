@@ -25,7 +25,7 @@ class LoginViewModel: ViewModel {
     let loginAction:Action<(String, String, String), Account, NetError>
     
     //MARK: regist
-    let registAction:Action<(String, String, String), Void, NetError>
+//    let registAction:Action<(String, String, String), Void, NetError>
     
     //MARK: regist
     let findPasswordAction:Action<(String, String, String), Void, NetError>
@@ -45,10 +45,7 @@ class LoginViewModel: ViewModel {
             return net.detach(.login(account: phone, code: code, password: password), Account.self)
         })
         
-        registAction = Action<(String, String, String), Void, NetError>.init(execute: { [unowned net] (phone, code, password) -> SignalProducer<Void, NetError> in
-            return net.detach(.regist(account: phone, code: code, password: password))
-        })
-        
+       
         findPasswordAction = Action<(String, String, String), Void, NetError>.init(execute: { [unowned net] (phone, code, password) -> SignalProducer<Void, NetError> in
             return net.detach(.findPassword(account: phone, code: code, password: password))
         })

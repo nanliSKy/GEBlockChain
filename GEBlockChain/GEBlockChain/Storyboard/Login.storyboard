@@ -379,9 +379,6 @@
                                 <state key="normal" title="注册">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <action selector="loginClick:" destination="hw1-XB-uq0" eventType="touchUpInside" id="0cG-87-Za9"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已有账号，马上登录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJ9-Ay-L9V">
                                 <rect key="frame" x="138" y="667.5" width="138" height="18"/>
@@ -398,7 +395,7 @@
                                 <state key="normal" image="squre_no_select"/>
                                 <state key="selected" image="squre_select"/>
                                 <connections>
-                                    <action selector="sendCodeClick:" destination="FPy-hM-mnR" eventType="touchUpInside" id="IJ2-19-xGM"/>
+                                    <action selector="readProtocolAction:" destination="FPy-hM-mnR" eventType="touchUpInside" id="m06-2i-zMy"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我已阅读并同意《用户协议》" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TDw-bK-B7h">
@@ -444,6 +441,7 @@
                         <outlet property="regist" destination="8Aq-Ec-bLi" id="BVu-Fh-UhZ"/>
                         <outlet property="sendCode" destination="bfL-pT-Nnb" id="fTF-yA-DpK"/>
                         <outlet property="tfCode" destination="4GO-YT-vx5" id="r96-t8-PDa"/>
+                        <outlet property="tfInvateCode" destination="yTK-gr-Ft4" id="Mjj-ow-iap"/>
                         <outlet property="tfPassword" destination="YEH-8o-w9H" id="J7I-RD-3Be"/>
                         <outlet property="tfPhone" destination="fz3-B3-Geg" id="vts-iK-9xP"/>
                     </connections>
@@ -657,6 +655,7 @@
                     <navigationItem key="navigationItem" id="IUc-c7-rKX"/>
                     <connections>
                         <outlet property="codeClicek" destination="G9g-di-yDk" id="bS9-xL-ifi"/>
+                        <outlet property="findPasswordButton" destination="zWz-oS-jxF" id="yGs-5P-2Hy"/>
                         <outlet property="tfCert" destination="RkY-o0-sMB" id="SXP-UA-f8B"/>
                         <outlet property="tfCode" destination="oeW-l9-inK" id="lkM-fg-gvt"/>
                         <outlet property="tfPassword" destination="e9a-pk-dja" id="ULl-mg-2J8"/>
