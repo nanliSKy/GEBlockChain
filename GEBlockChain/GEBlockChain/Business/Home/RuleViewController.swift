@@ -16,6 +16,8 @@ class RuleViewController: UIViewController {
     @IBOutlet weak var timeView2: UILabel!
     @IBOutlet weak var timeView3: UILabel!
     @IBOutlet weak var timeView4: UILabel!
+    
+    private var assetId: String?
     private let items: [String] = ["认购#若项目发行成功，则认购期结束次日开始计息，认购期购买的用户将以每日3%年化收益率作为认购期补偿。若发行失败，则退还所有认购款。", "买入#买入份额后的第二日开始计算收益。", "收益结算#产品收益每日会有估值，每月的第N个自然日进行收益结算。实际结算到账金额以当月电费收益为准。", "到期#产品理财时间结束用户将不再获得收益，用户本金将在2日内归还到用户的平台账户中。"]
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +27,20 @@ class RuleViewController: UIViewController {
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200
+        
+        requeestStations()
         // Do any additional setup after loading the view.
     }
 
+    
+    private func requeestStations() {
+        let manager = AssetsViewModel()
+        manager.requestStationsAction.values.observeValues { [unowned self] (stations) in
+            
+        }
+//        manager.requestStationsAction.apply(asset!.assetId).start()
+        manager.requestStationsAction.apply("55922464").start()
+    }
 }
 
 extension RuleViewController: UITableViewDataSource {
@@ -46,9 +59,9 @@ extension RuleViewController: UITableViewDataSource {
 
 extension RuleViewController {
     
-    static func board(_ title: String) -> RuleViewController {
+    static func board(_ assetId: String) -> RuleViewController {
         let vc: RuleViewController = Board(.Main).destination(RuleViewController.self) as! RuleViewController
-        vc.title = title
+        vc.assetId = assetId
         return vc
     }
 }

@@ -17,7 +17,7 @@ class ProjectIntroViewController: UIViewController {
     }()
     
     private lazy var viewControllers: [UIViewController] = {
-       return [RuleTableViewController(), RuleTableViewController(), RuleTableViewController(), RuleTableViewController()]
+       return [TableViewController(), TableViewController(), TableViewController(), TableViewController()]
     }()
     
     private lazy var titles: [String] = {

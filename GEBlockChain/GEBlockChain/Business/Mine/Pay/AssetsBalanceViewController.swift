@@ -16,10 +16,15 @@ class AssetsBalanceViewController: GEBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "资金明细", style: .plain, target: self, action: #selector(getFundsList))
+        
         getFundBalance()
         // Do any additional setup after loading the view.
     }
     
+    @objc private func getFundsList() {
+        self.navigationController?.pushViewController(AssetsFlowRecordViewController.board("资金明细"), animated: true)
+    }
     
     private func getFundBalance() {
         let viewModel = FundViewModel()

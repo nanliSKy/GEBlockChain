@@ -17,8 +17,10 @@ class OrderEndSuccessViewController: GEBaseViewController {
     @IBOutlet weak var sellAction: UIButton!
     @IBOutlet weak var titleContrainerView: UIView!
     private var orderId = ""
+    private var type: MarketType? = .subscriptType
     private var order: PlaceOrderDetail?
     @IBOutlet weak var tableView: UITableView!
+    private let manager = PlaceOrderViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,19 +29,52 @@ class OrderEndSuccessViewController: GEBaseViewController {
         hbd_barTintColor = Pen.view(.basement)
         hbd_titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
-        getOrderDetail()
+        if type == .subscriptType {
+            getSubscribeOrderDetail()
+        }else if type == .tradeType {
+            getTradeOrderDetail()
+        }
         // Do any additional setup after loading the view.
     }
     
     
-    private func getOrderDetail() {
-        let viewModel = PlaceOrderViewModel()
-        viewModel.placeOrderDetailAction.values.observeValues { [unowned self] (order) in
-            self.tableView.reloadData()
+    private func getSubscribeOrderDetail() {
+        manager.placeOrderDetailAction.values.observeValues { [unowned self] (order) in
+            
+            self.order = order
+            DispatchQueue.main.async {
+                self.titleView.text = order.title
+                self.tableView.reloadData()
+            }
             print(order)
         }
         
-        viewModel.placeOrderDetailAction.apply(orderId).start()
+        Toast.show(manager.placeOrderDetailAction.errors)
+        manager.placeOrderDetailAction.apply(orderId).start()
+    }
+    
+    private func getTradeOrderDetail() {
+        manager.placeTradeOrderDetailAction.values.observeValues { [unowned self] (order) in
+            
+            self.order = order
+            DispatchQueue.main.async {
+                self.titleView.text = order.title
+                self.tableView.reloadData()
+            }
+            print(order)
+        }
+        
+        Toast.show(manager.placeTradeOrderDetailAction.errors)
+        manager.placeTradeOrderDetailAction.apply(orderId).start()
+    }
+    
+    @objc private func popAction(_ item: UIBarButtonItem) {
+        
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 }
 
@@ -55,21 +90,24 @@ extension OrderEndSuccessViewController: UITableViewDataSource {
         cell.titleView.text = menus[indexPath.row]
         cell.recommendView.isHidden = true
         cell.actionView.isHidden = true
+        
+        guard let order = order else { return cell }
+        
         if indexPath.row == 0 {
-            cell.menuView.text = order?.orderId
+            cell.menuView.text = type == .subscriptType ? order.subscribeId : order.orderId
             cell.actionView.isHidden = false
-            cell.actionView.reactive.controlEvents(.touchUpOutside).observeValues { [unowned self] (_) in
+            cell.actionView.reactive.controlEvents(.touchUpInside).observeValues { [unowned self] (_) in
                 let pastboard = UIPasteboard.general
-                pastboard.string = self.order?.orderId
+                pastboard.string = type == .subscriptType ? order.subscribeId : order.orderId
                 Toast.show(message: "已复制")
             }
         }else if indexPath.row == 1 {
-            cell.menuView.text = order?.date.timeIntervalToStr(dateFormat: nil)
+            cell.menuView.text = order.date.timeIntervalToStr(dateFormat: nil)
         }else if indexPath.row == 2 {
-            cell.menuView.text = order?.quantity
+            cell.menuView.text = "\(order.quantity!)份"
         }else if indexPath.row == 3 {
             cell.menuView.textColor = "#FF2828".colorful()
-            cell.menuView.text = order?.total
+            cell.menuView.text = "\(order.total!)"
         }
         return cell
     }
@@ -92,9 +130,10 @@ extension OrderEndSuccessViewController: UITableViewDelegate {
 
 extension OrderEndSuccessViewController {
     
-    static func board(orderId: String) -> OrderEndSuccessViewController {
+    static func board(orderId: String, type: MarketType? = .subscriptType) -> OrderEndSuccessViewController {
         let vc: OrderEndSuccessViewController = Board(.Pay).destination(OrderEndSuccessViewController.self) as! OrderEndSuccessViewController
-
+        vc.orderId = orderId
+        vc.type = type
         return vc
     }
     

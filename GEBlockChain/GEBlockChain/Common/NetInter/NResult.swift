@@ -86,7 +86,7 @@ public struct NetResult<Care: Decodable> : Decodable {
     
 extension NetResult {
     public static var ParseWrong: NetResult {
-        return NetResult(result: nil, message: "数据异常，请联系客服", code: -999, good: false)
+        return NetResult(result: nil, message: "数据异常", code: -999, good: false)
     }
 }
 
@@ -122,7 +122,7 @@ public enum NetError: Error, CustomStringConvertible {
     case business(BasicInfo), network(String, Response?)
     /// 解析错误
     public static var ParseWrong: NetError {
-        return .business(BasicInfo(success: false, message: "数据异常，请联系客服", code: -999))
+        return .business(BasicInfo(success: false, message: "数据异常", code: -999))
     }
     
     /// 快速创建业务错误

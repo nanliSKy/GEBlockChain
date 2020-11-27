@@ -33,6 +33,9 @@ class HomeAssetsViewModel: ViewModel, TableViewHandler {
         list <~ subscribeListAction.values
     }
     
+    private(set) lazy var baseAssetsAction = Action<String, TAssets, NetError> { [unowned net] (assetsId) -> SignalProducer<TAssets, NetError> in
+        return net.detach(.assetBaseDetail(assetsId), TAssets.self)
+    }
     
 //    private(set) lazy var subscribeListAction = Action<(), DATASOURCE, NetError> { [unowned net] _ in
 //        return net.detach(.subscriptList, DATASOURCE.self)

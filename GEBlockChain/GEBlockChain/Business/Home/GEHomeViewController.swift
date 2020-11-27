@@ -208,7 +208,7 @@ final class HomeBusinessVM: ViewModel, TableViewHandler {
 
     init() {
         action = Action<(), [Bussiness], NetError> { [unowned net] _ in
-            return net.detach(.getAssetsList, DATASOURCE.self)
+            return net.detach(.getStations(""), DATASOURCE.self)
         }
         
 //        list <~ action.values

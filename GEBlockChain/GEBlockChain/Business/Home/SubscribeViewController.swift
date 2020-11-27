@@ -29,14 +29,15 @@ class SubscribeViewController: GEBaseViewController {
         // Do any additional setup after loading the view.
         
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak manager] in
-            manager?.executeIfPossible(0, header: true)
+            manager?.executeIfPossible(header: true)
         })
         
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { [weak manager] in
-            manager?.executeIfPossible(2, header: false)
+            manager?.executeIfPossible(header: false)
             
         })
         
+        manager.executeIfPossible(header: true)
         tableView.manage(by: manager)
 
         manager.dataHandle()
@@ -79,7 +80,8 @@ extension SubscribeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        self.navigationController?.pushViewController(TradeContainerViewController(), animated: true)
+        guard let assets = manager.element(at: indexPath.row) else { return  }
+        self.navigationController?.pushViewController(IndexProjectViewController.boardC(assets.assetId!), animated: true)
     }
 }
 

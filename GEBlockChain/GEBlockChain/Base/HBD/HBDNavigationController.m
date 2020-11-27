@@ -150,6 +150,8 @@
             itemleft = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_back"] style:UIBarButtonItemStylePlain target:viewController action:@selector(popAction:)];
         }
         viewController.navigationItem.leftBarButtonItem = itemleft;
+    }else {
+        viewController.navigationItem.leftBarButtonItem = nil;
     }
     
     

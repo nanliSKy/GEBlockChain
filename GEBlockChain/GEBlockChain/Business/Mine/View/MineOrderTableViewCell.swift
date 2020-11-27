@@ -33,9 +33,9 @@ class MineOrderTableViewCell: BaseCell {
         if isTradeOrder {
             let s1 = MineC(content: "待付款".localized, iamge: "mine_paying")
             c.append(s1)
-            let s2 = MineC(content: "已取消".localized, iamge: "mine_order_cancel")
+            let s2 = MineC(content: "已完成".localized, iamge: "mine_order_done")
             c.append(s2)
-            let s3 = MineC(content: "已完成".localized, iamge: "mine_order_done")
+            let s3 = MineC(content: "已取消".localized, iamge: "mine_order_cancel")
             c.append(s3)
         }else {
             let s1 = MineC(content: "认购中".localized, iamge: "mine_paying")
@@ -107,6 +107,10 @@ class MineOrderTableViewCell: BaseCell {
                 make.top.bottom.equalToSuperview()
             }
             
+            button.reactive.controlEvents(.touchUpInside).observeValues { [unowned self] (sender) in
+                self.selectControllerIndex.value = (isTradeOrder, 0)
+            }
+            
             let lineView = UIView()
             lineView.backgroundColor = "#F2F2F4".colorful()
             orderContainer.addSubview(lineView)
@@ -149,7 +153,7 @@ class MineOrderTableViewCell: BaseCell {
 extension MineOrderTableViewCell: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.selectControllerIndex.value = (isTradeOrder, indexPath.row)
+        self.selectControllerIndex.value = (isTradeOrder, indexPath.row + 1)
     }
 }
 

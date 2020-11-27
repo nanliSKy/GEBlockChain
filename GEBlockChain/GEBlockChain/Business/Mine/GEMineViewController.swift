@@ -111,14 +111,17 @@ extension GEMineViewController: UITableViewDataSource {
                     self.navigationController?.pushViewController(AssetsBalanceViewController.board("账户余额"), animated: true)
                     break
                 case 1:
-                    self.navigationController?.pushViewController(AssetsFlowRecordViewController.board("资金明细"), animated: true)
+                    self.navigationController?.pushViewController(AssetsOwnerViewController.board("我的资产"), animated: true)
                     break
                 case 2:
-                    self.navigationController?.pushViewController(PlaceAnOrderViewController.board(nil), animated: true)
+                    self.navigationController?.pushViewController(AssetsBalanceViewController.board("账户余额"), animated: true)
                     break
                 case 3:
-                    self.navigationController?.pushViewController(GEMarketViewController(), animated: true)
+                    self.navigationController?.pushViewController(AssetsBalanceViewController.board("账户余额"), animated: true)
                     break
+            case 4:
+                self.navigationController?.pushViewController(PendOrderViewController.board("我的挂单"), animated: true)
+                break
                     
             default:
                     self.navigationController?.pushViewController(AssetsOwnerViewController.board("我的资产"), animated: true)
@@ -129,9 +132,13 @@ extension GEMineViewController: UITableViewDataSource {
         }
         
         let cell: MineOrderTableViewCell = MineOrderTableViewCell.init(style: .default, reuseIdentifier: "Cell\(indexPath.row)")
-            cell.isTradeOrder = indexPath.row == 1 ? true : false
+            cell.isTradeOrder = indexPath.row == 1 ? false : true
             cell.selectControllerIndex.signal.observeValues { [unowned self] (isTradeOrder, index) in
-                self.navigationController?.pushViewController(TradeOrderContainerViewController(), animated: true)
+                if indexPath.row == 1 {
+                    self.navigationController?.pushViewController(SubscribeOwnerContainerViewController.boardC(index), animated: true)
+                }else {
+                    self.navigationController?.pushViewController(TradeOrderContainerViewController(), animated: true)
+                }
             
             }
         return cell

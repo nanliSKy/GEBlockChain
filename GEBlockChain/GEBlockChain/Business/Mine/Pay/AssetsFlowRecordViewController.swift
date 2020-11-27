@@ -7,11 +7,28 @@
 //
 
 import UIKit
-
+import MJRefresh
 class AssetsFlowRecordViewController: GEBaseViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    
+    let manager = AssetsFlowViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak manager] in
+            manager?.executeIfPossible(header: true)
+        })
+        
+        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { [weak manager] in
+            manager?.executeIfPossible(header: false)
+            
+        })
+        
+        manager.executeIfPossible(header: true)
+        tableView.manage(by: manager)
+
+        manager.dataHandle()
 
         // Do any additional setup after loading the view.
     }
@@ -23,12 +40,13 @@ extension AssetsFlowRecordViewController: UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return manager.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: AssetsFlowCell = tableView.dequeueReusableCell(for: indexPath)
-        
+        let flow = manager.element(at: indexPath.row)
+        cell.flow = flow
         return cell
     }
 }
@@ -50,8 +68,8 @@ extension AssetsFlowRecordViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        self.navigationController?.pushViewController(AssetsInfoViewController.board("资金明细"), animated: true)
+        let flow = manager.element(at: indexPath.row)
+        self.navigationController?.pushViewController(AssetsInfoViewController.board(flow!), animated: true)
     }
 }
 
@@ -65,3 +83,5 @@ extension AssetsFlowRecordViewController {
     }
     
 }
+
+

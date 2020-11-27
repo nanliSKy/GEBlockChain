@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import ReactiveSwift
 class HeaderPowerView: XibView {
         
 }
@@ -24,11 +24,27 @@ class IntroHeaderView: XibView {
     @IBOutlet weak var priceView: UILabel!
     @IBOutlet weak var timeView: UILabel!
     @IBOutlet weak var chartTitleView: UILabel!
+    @IBOutlet weak var yValue: UILabel!
     @IBOutlet weak var chartContainerView: UIView!
     @IBOutlet weak var chartCheckView: UIView!
+    @IBOutlet weak var bottomTitleView: UILabel!
+    
+    let chartOperator = MutableProperty((0, 0))
+    var chartType = ChartType.rateC {
+        didSet {
+            chartView.chartType = chartType
+        }
+    }
     
     private let chartView: IntroLineChartView = IntroLineChartView(frame: .zero)
+    private let barChart: IntroBarChartView = IntroBarChartView(frame: .zero)
     
+    var charts:[YearProfit]? {
+        didSet {
+            chartView.charts = charts
+            chartContainerView.addSubview(chartView)
+        }
+    }
     @IBOutlet weak var segmentedControl: MASegmentedControl! {
         didSet {
             segmentedControl.itemsWithText = true
@@ -76,37 +92,51 @@ class IntroHeaderView: XibView {
     
     override func loadedFromNib() {
         super.loadedFromNib()
-        chartContainerView.addSubview(chartView)
+
+        chartView.chartValue.signal.observeValues { [unowned self] (x, y) in
+            self.chartTitleView.text = "预计年化发电回报率（\(x)%）"
+            self.yValue.text = "第\(Int(y))年"
+        }
+        
+        
     }
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        chartView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+        if chartView.superview != nil {
+            chartView.snp.makeConstraints { (make) in
+                make.edges.equalToSuperview()
+            }
         }
+        if barChart.superview != nil {
+            barChart.snp.makeConstraints { (make) in
+                make.edges.equalToSuperview()
+            }
+        }
+        
+        
     }
     
     
    @objc private func segmemtedControlCC(_ segmented: MASegmentedControl) {
+        
+        bottomTitleView.isHidden = !(segmented.selectedSegmentIndex == 0)
+        segmentedControlCheck.isHidden = segmented.selectedSegmentIndex == 0
+        segmentedControlCheck.selectedSegmentIndex = 0
     
-        if segmented.selectedSegmentIndex == 0{
-        
-        }else if segmented.selectedSegmentIndex == 1 {
-        
-        }else if segmented.selectedSegmentIndex == 2 {
-        
-        }
+        chartOperator.value = (segmentedControl.selectedSegmentIndex, segmentedControlCheck.selectedSegmentIndex)
     }
     
     @objc private func segmemtedControlCheckCC(_ segmented: MASegmentedControl) {
      
-         if segmented.selectedSegmentIndex == 0{
-         
-         }else if segmented.selectedSegmentIndex == 1 {
-         
-         }else if segmented.selectedSegmentIndex == 2 {
-         
-         }
+        chartOperator.value = (segmentedControl.selectedSegmentIndex, segmentedControlCheck.selectedSegmentIndex)
+//         if segmented.selectedSegmentIndex == 0{
+//            chartOperator.value = (0, 0)
+//         }else if segmented.selectedSegmentIndex == 1 {
+//            chartOperator.value = (0, 1)
+//         }else if segmented.selectedSegmentIndex == 2 {
+//
+//         }
         
      }
     

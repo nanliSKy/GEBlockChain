@@ -76,7 +76,7 @@ class GEProjectViewController: UIViewController {
   /// while swiping between pages. Since we only have three view
   /// controllers it's fine to keep them all in memory.
   private let viewControllers = [
-    RuleTableViewController(),
+    TableViewController(),
     TableViewController(),
     TableViewController(),
     TableViewController()
@@ -191,7 +191,7 @@ extension GEProjectViewController: PagingViewControllerDelegate {
   }
   
   func pagingViewController(_: PagingViewController, willScrollToItem pagingItem: PagingItem, startingViewController: UIViewController, destinationViewController: UIViewController) {
-    guard let destinationViewController = destinationViewController as? RuleTableViewController else { return }
+    guard let destinationViewController = destinationViewController as? TableViewController else { return }
     
     // Update the content offset based on the height of the header
     // view. This ensures that the content offset is correct if you

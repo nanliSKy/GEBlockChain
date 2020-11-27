@@ -20,6 +20,7 @@ class PlaceAnOrderViewController: GEBaseViewController {
     @IBOutlet weak var safeAction: UIButton!
     @IBOutlet weak var readAction: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    var marketType: MarketType? = .subscriptType
     let viewModel = PlaceOrderViewModel()
     
     private var assets: TAssets? {
@@ -69,22 +70,52 @@ class PlaceAnOrderViewController: GEBaseViewController {
     
     private func placeOrderOperator() {
         
+        if marketType == .subscriptType {
+            subscriptOperator()
+        }else if marketType == .tradeType {
+            tradeOperator()
+        }
+        
+    }
+
+    private func subscriptOperator() {
         viewModel.placeOrderAction.values.observeValues { [unowned self] (order) in
             if let price = self.assets?.price {
                 let amount = "\(Float(price)! * Float(placeOrderView.number.value))"
-                self.navigationController?.pushViewController(OrderPaySuccessViewController.board(amount: amount, orderId: order.orderId), animated: true)
+                self.navigationController?.pushViewController(OrderPaySuccessViewController.board(amount: amount, order: order), animated: true)
             }
             
         }
         
+        viewModel.placeOrderAction.errors.observeResult { [unowned self] (result) in
+            self.navigationController?.pushViewController(OrderPaySuccessViewController.board(amount: "0", order: nil), animated: true)
+        }
         Toast.show(viewModel.placeOrderAction.errors)
         guard let assetId = assets?.assetId else {
             return
         }
-        
         viewModel.placeOrderAction.apply((assetId, "\(self.placeOrderView.number.value)")).start()
     }
-
+    
+    private func tradeOperator() {
+        
+        viewModel.placeTradeOrderAction.values.observeValues { [unowned self] (order) in
+            if let price = self.assets?.price {
+                let amount = "\(Float(price)! * Float(placeOrderView.number.value))"
+                self.navigationController?.pushViewController(OrderPaySuccessViewController.board(amount: amount, order: order, type: marketType), animated: true)
+            }
+            
+        }
+        viewModel.placeTradeOrderAction.errors.observeResult { [unowned self] (result) in
+            self.navigationController?.pushViewController(OrderPaySuccessViewController.board(amount: "0", order: nil, type: marketType), animated: true)
+        }
+        
+        Toast.show(viewModel.placeTradeOrderAction.errors)
+        guard let assetId = assets?.commissionId else {
+            return
+        }
+        viewModel.placeTradeOrderAction.apply((assetId, "\(self.placeOrderView.number.value)")).start()
+    }
 }
 
 extension PlaceAnOrderViewController: UITableViewDataSource {
@@ -130,9 +161,10 @@ extension PlaceAnOrderViewController: UITableViewDelegate {
 
 extension PlaceAnOrderViewController {
     
-    static func board(_ assets: TAssets?) -> PlaceAnOrderViewController {
+    static func board(_ assets: TAssets?, type: MarketType? = .subscriptType) -> PlaceAnOrderViewController {
         let vc: PlaceAnOrderViewController = Board(.Pay).destination(PlaceAnOrderViewController.self) as! PlaceAnOrderViewController
         vc.assets = assets
+        vc.marketType = type
         return vc
     }
     

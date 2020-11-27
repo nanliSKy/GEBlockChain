@@ -53,11 +53,11 @@ class TradeSortArrowView: UIView {
         tap.reactive.stateChanged.observeValues { [unowned self] _ in
             if self.select {
                 self.ascending = !self.ascending
-                self.state.value = self.ascending ? (self.index, 1)  : (self.index, 2)
+                self.state.value = self.ascending ? (self.index, 0)  : (self.index, 1)
             }else {
                 self.select = !self.select
                 self.ascending = true
-                self.state.value = (self.index, 1)
+                self.state.value = (self.index, 0)
             }
             
         }

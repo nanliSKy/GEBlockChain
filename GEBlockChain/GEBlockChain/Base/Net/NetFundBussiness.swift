@@ -12,6 +12,8 @@ enum NetFundBussiness {
     
     case profit  //收益
     case balance  //账户余额
+    case ownerAssets(Int, Int)  //我的资产
+    case ownerFlowAssets(Int, Int) //资金明细
     
 //    //账号 密码或验证码 登录方式
 //    case smsCode(account: String)
@@ -33,6 +35,10 @@ extension NetFundBussiness: NetTargetType {
             return "fund/profit"
         case .balance:
             return "fund/balance"
+        case .ownerAssets:
+            return "asset/myAssets"
+        case .ownerFlowAssets:
+            return "fund/flow"
         
         }
     }
@@ -42,6 +48,10 @@ extension NetFundBussiness: NetTargetType {
         case .profit:
             return .get
         case .balance:
+            return .get
+        case .ownerAssets:
+            return .get
+        case .ownerFlowAssets:
             return .get
         }
     }
@@ -53,6 +63,15 @@ extension NetFundBussiness: NetTargetType {
             return .requestPlain
         case .balance:
             return .requestPlain
+        case .ownerAssets(let page, let size):
+            params["pageNumber"] = page
+            params["pageSize"] = size
+            break
+        case .ownerFlowAssets(let page, let size):
+            params["pageNumber"] = page
+            params["pageSize"] = size
+            break
+        
 //        case .smsCode(let phone):
 //            params["phone"] = phone
 //            break
@@ -75,6 +94,7 @@ extension NetFundBussiness: NetTargetType {
         
         
         return .requestParameters(parameters: params, encoding: URLEncoding.default)
+        
     }
     
 }

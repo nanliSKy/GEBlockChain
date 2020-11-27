@@ -35,6 +35,8 @@ extension UITableView {
         self.reactive.reload <~ handler.megerValueWithError.observe(on: QueueScheduler.main)
         
         self.reactive.outOfData <~ handler.dataSource.isEmpty.signal.observe(on: QueueScheduler.main)
+        
+        
     }
 }
 
@@ -50,6 +52,7 @@ extension Reactive where Base == UITableView {
             tableView.endRefresh(outOfData: outOfData)
         }
     }
+    
     
     public var reload: BindingTarget<Bool> {
         return makeBindingTarget { (tableView, value) in
@@ -75,6 +78,7 @@ protocol TableViewHandler: RandomAccessCollection {
     
     /// 异常情况
     var error: Signal <String, Never> {get}
+   
     
 }
 

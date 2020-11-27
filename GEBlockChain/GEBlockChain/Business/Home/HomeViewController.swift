@@ -107,6 +107,6 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let assets = viewModel.element(at: indexPath.row) else { return  }
-        self.navigationController?.pushViewController(IndexProjectViewController.boardC(assets), animated: true)
+        self.navigationController?.pushViewController(IndexProjectViewController.boardC(assets.assetId!), animated: true)
     }
 }

@@ -11,9 +11,12 @@ import Parchment
 
 class TraderOrderBuyContrainerViewController: GEBaseViewController {
 
+    private var index: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//        title = "我的认购"
+        
         let viewControllers = [
             OrderBuyViewController.board("全部", 0),
             OrderBuyViewController.board("待付款", 1),
@@ -34,7 +37,7 @@ class TraderOrderBuyContrainerViewController: GEBaseViewController {
             make.top.equalTo(view.snp.top).offset(Device.navBarHeight)
         }
         pagingViewController.didMove(toParent: self)
-        
+        pagingViewController.select(index: index)
         // Do any additional setup after loading the view.
     }
     

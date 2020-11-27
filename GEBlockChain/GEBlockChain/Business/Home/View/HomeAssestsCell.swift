@@ -38,11 +38,15 @@ class HomeAssestsCell: UITableViewCell {
             }
          
             if let a = assets {
-                numbers.text = "已购/剩余：\(a.sold)/\(a.left)"
+                numbers.text = "已购/剩余：\(a.sold!)/\(a.left)"
             }
             
             
-            let hightlights = assets?.highlights.components(separatedBy: ",")
+            
+            let progress = Float(assets?.sold ?? "0")!/Float(assets?.total ?? "0")!
+            bar.progress = CGFloat(progress)
+            
+            let hightlights = assets?.highlights?.components(separatedBy: ",")
             hightlightContainer.subviews.forEach { $0.removeFromSuperview() } 
             if let items = hightlights {
                 
@@ -61,13 +65,12 @@ class HomeAssestsCell: UITableViewCell {
                 }
             }
             
-            let progress = Float(assets?.sold ?? "0")!/Float(assets?.total ?? "0")!
-            bar.progress = CGFloat(progress)
+            
             
         }
     }
     
-    private lazy var stateView: UIImageView = {
+     lazy var stateView: UIImageView = {
         let state = UIImageView(image: UIImage(named: "state_subscribe_reffer"))
         return state
     }()
